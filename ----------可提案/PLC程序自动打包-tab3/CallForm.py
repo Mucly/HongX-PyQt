@@ -28,7 +28,7 @@ class MainForm(Ui_MainWindow, QMainWindow):
         # display
         self.setupUi(self)
         self.initUi()
-        self.initVariate()
+        self.initVar()
         self.initMenu()
 
         # slots and emit
@@ -154,7 +154,7 @@ class MainForm(Ui_MainWindow, QMainWindow):
                 self.btnMsg(self.MsgFalse, "#3")
         finally:
             ssh.close()
-            self.write2Regedit()   # Chenly 2018-09-05 写入配置信息
+            self.write2Ini()   # Chenly 2018-09-05 写入配置信息
             return result
 
     def setCurDate(self):   # Chenly 2018-09-10 自动根据当前系统日期设置时间
@@ -172,7 +172,7 @@ class MainForm(Ui_MainWindow, QMainWindow):
         cur_date = tmp[0:2] + month + day
         self.date.setText(cur_date)
 
-    def readFrRegedit(self):  # Chenly 2018-09-07 读取配置信息
+    def readFrIni(self):  # Chenly 2018-09-07 读取配置信息
         for key, value in self._cellMap.items():
             if self._settings.value(key) is None:
                 self.progm_store.setText(self.getDskTop())
@@ -183,7 +183,7 @@ class MainForm(Ui_MainWindow, QMainWindow):
 
         self.setCurDate()
 
-    def write2Regedit(self):   # Chenly 2018-09-07 保存配置信息
+    def write2Ini(self):   # Chenly 2018-09-07 保存配置信息
         for key, value in self._cellMap.items():
             self._settings.setValue(key, QVariant(value.text()))
 
@@ -195,7 +195,7 @@ class MainForm(Ui_MainWindow, QMainWindow):
             QMessageBox.critical(self, "Warning!",
                                  self.tr("填写内容有误，请检查!" + t))
 
-    def initVariate(self):
+    def initVar(self):
         self.pBar_step = 0
         self._settings = QSettings(
             "TechMation\\Chenly\\Qt-tools", "PLC_Pack")
@@ -229,7 +229,7 @@ class MainForm(Ui_MainWindow, QMainWindow):
     def initCell(self):
         self.pBar.setVisible(False)
 
-        self.readFrRegedit()
+        self.readFrIni()
 
     def initMenu(self):
         pass
