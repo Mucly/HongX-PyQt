@@ -117,18 +117,16 @@ class MainForm(Ui_MainWindow, QMainWindow):
         ssh = paramiko.SSHClient()
         # 用于允许连接不在known_hosts名单中的主机
         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-
         try:
             time_out_flag = True
             tmp = ssh.connect(hostname=self.HMI_ip.text(), port=self.HMI_port.text(),
-                              username=self.HMI_account.text(), password=self.HMI_passwd.text(), timeout=1)
+                              username=self.HMI_account.text(), password=self.HMI_passwd.text(), timeout=3)
             # for key in shell:
             #     stdin, stdout, stderr = ssh.exec_command(shell[key])
             #     result[key] = stdout.read(), stderr.read()
 
             # self.pBar_step = self.pBar_step + 10
             self.pBar.setValue(60)
-
             for shell in self._shell_list:
                 ssh.exec_command(shell)
 
@@ -136,6 +134,7 @@ class MainForm(Ui_MainWindow, QMainWindow):
                 self.move_plc(self._res, self.progm_store.text(),
                               self._plc_progm)
 
+                # Chenly 2018-09-14 删除HMI/usr路径下生成的程式，以减少空间占用
                 self.pBar.setValue(80)
                 cmd_del_plc = f"cd /usr && rm -rf {self._plc_progm}"
                 ssh.exec_command(cmd_del_plc)
