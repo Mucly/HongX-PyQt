@@ -120,7 +120,7 @@ class MainForm(Ui_MainWindow, QMainWindow):
         try:
             time_out_flag = True
             tmp = ssh.connect(hostname=self.HMI_ip.text(), port=self.HMI_port.text(),
-                              username=self.HMI_account.text(), password=self.HMI_passwd.text(), timeout=3)
+                              username=self.HMI_account.text(), password=self.HMI_passwd.text(), timeout=6)
             # for key in shell:
             #     stdin, stdout, stderr = ssh.exec_command(shell[key])
             #     result[key] = stdout.read(), stderr.read()
@@ -148,7 +148,7 @@ class MainForm(Ui_MainWindow, QMainWindow):
             # print('err: ' + e)
             if (time_out_flag is True):
                 QMessageBox.critical(
-                    self, 'err', '无法与指定ip地址进行网络通讯', QMessageBox.Cancel)
+                    self, '连接超时', '6s连接超时，无法与指定ip地址进行网络通讯，请检查网络是否正常', QMessageBox.Cancel)
             else:
                 self.btnMsg(self.MsgFalse, "#3")
         finally:
