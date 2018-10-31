@@ -8,7 +8,9 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+
 class Ui_MainWindow(object):
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(710, 383)
@@ -108,10 +110,13 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.pushButton_Other.setText(_translate("MainWindow", "其他"))
         self.pushButton_55_270.setText(_translate("MainWindow", "55_270_M12"))
-        self.lineEdit_55_270.setText(_translate("MainWindow", "W:/pxammi/7HT_M12_DSP55/res_tm640/font/test_v8/"))
-        self.lineEdit_55_3354.setText(_translate("MainWindow", "V:/pxammi/7HT_3354_M12/res_tm640/font/test_v8/"))
-        self.lineEdit_54.setText(_translate("MainWindow", "W:/pxammi/7HT_PXA270_M12/res_tm640/font/test_v8/"))
+        self.lineEdit_55_270.setText(_translate(
+            "MainWindow", "W:/pxammi/7HT_M12_DSP55/res_tm640/font/test_v8/"))
+        self.lineEdit_55_3354.setText(_translate(
+            "MainWindow", "V:/pxammi/7HT_3354_M12/res_tm640/font/test_v8/"))
+        self.lineEdit_54.setText(_translate(
+            "MainWindow", "W:/pxammi/7HT_PXA270_M12_1895ToZyh/res_tm640/font/test_v8/"))
         self.pushButton_54.setText(_translate("MainWindow", "54"))
         self.pushButton_55_3354.setText(_translate("MainWindow", "55_3354"))
-        self.label_Prompt.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:16pt;\">进度</span></p></body></html>"))
-
+        self.label_Prompt.setText(_translate(
+            "MainWindow", "<html><head/><body><p><span style=\" font-size:16pt;\">进度</span></p></body></html>"))

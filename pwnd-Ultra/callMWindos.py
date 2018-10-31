@@ -49,7 +49,8 @@ class MainForm(QMainWindow, Ui_MainWindow):
                 and self.lineEdit_CellKey.text() != ''):
             self.btn_Go.setEnabled(False)
             rplcCell(self.lineEdit_rsc.text(), self.lineEdit_CellType.text(),
-                     self.lineEdit_CellKey.text(), self.lineEdit_CellValue.text(), self.cb_orig_code.currentText(), self.cb_exp_code.currentText())
+                     self.lineEdit_CellKey.text(), self.lineEdit_CellValue.text(),
+                     self.cb_orig_code.currentText(), self.cb_exp_code.currentText())
             QMessageBox.about(self, '提示', '已在桌面生成form文件夹！')
             self.btn_Go.setEnabled(True)
         else:

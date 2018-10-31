@@ -32,6 +32,7 @@ def rplcCell(form_path, cell, key, value, code_in='utf-8', code_out='utf-8'):
     for root, folders, files in os.walk(form_path):
         for file in files:
             if '.txt' == os.path.splitext(file)[1]:  # 只修改txt画面脚本
+                linesBuff = ""
                 dst_file = dst_path + os.sep + file
                 f_read = open(file, encoding=code_in, errors='ignore')
                 f_write = open(dst_file, 'w', encoding=code_out,
@@ -51,6 +52,7 @@ def rplcCell(form_path, cell, key, value, code_in='utf-8', code_out='utf-8'):
                                 line = re.sub(attr_pat, attr_rlpc, line)
                                 cellfound_flag = False
 
+                    # linesBuff += line + '\r'
                     f_write.write(line)
 
                 f_read.close()
