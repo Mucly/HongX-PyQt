@@ -59,6 +59,7 @@ class MainForm(QWidget, Ui_Form):
         else:
             self.lineEdit_AuthorizedCode.setText("请输入正确的特征码")
 
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     TestLogic1 = MainForm()
