@@ -14,7 +14,7 @@
    <string>批量替换txt画面脚本属性</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLineEdit" name="lineEdit_rsc">
+   <widget class="QLineEdit" name="ed_fold_path">
     <property name="geometry">
      <rect>
       <x>140</x>
@@ -25,15 +25,17 @@
     </property>
     <property name="font">
      <font>
-      <family>Hack</family>
-      <pointsize>14</pointsize>
+      <family>微软雅黑</family>
+      <pointsize>11</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
      </font>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
     </property>
     <property name="placeholderText">
-     <string>资源路径，例：V:\XXX\res_tm640\form</string>
+     <string>资源路径</string>
     </property>
    </widget>
    <widget class="QComboBox" name="cb_orig_code">
@@ -47,8 +49,10 @@
     </property>
     <property name="font">
      <font>
-      <family>Hack</family>
+      <family>微软雅黑</family>
       <pointsize>12</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
      </font>
     </property>
     <property name="currentText">
@@ -63,18 +67,23 @@
      <rect>
       <x>20</x>
       <y>260</y>
-      <width>91</width>
-      <height>21</height>
+      <width>100</width>
+      <height>25</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Hack</family>
-      <pointsize>15</pointsize>
+      <family>微软雅黑</family>
+      <pointsize>12</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
      </font>
     </property>
     <property name="text">
      <string>原编码</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
@@ -82,18 +91,23 @@
      <rect>
       <x>20</x>
       <y>300</y>
-      <width>91</width>
-      <height>21</height>
+      <width>100</width>
+      <height>25</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Hack</family>
-      <pointsize>15</pointsize>
+      <family>微软雅黑</family>
+      <pointsize>12</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
      </font>
     </property>
     <property name="text">
      <string>预期编码</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QComboBox" name="cb_exp_code">
@@ -107,21 +121,23 @@
     </property>
     <property name="font">
      <font>
-      <family>Hack</family>
-      <pointsize>10</pointsize>
+      <family>微软雅黑</family>
+      <pointsize>12</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
      </font>
     </property>
     <property name="maxVisibleItems">
      <number>3</number>
     </property>
    </widget>
-   <widget class="QPushButton" name="btn_chosefile">
+   <widget class="QPushButton" name="btn_fold">
     <property name="geometry">
      <rect>
       <x>20</x>
       <y>20</y>
-      <width>111</width>
-      <height>31</height>
+      <width>100</width>
+      <height>25</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -132,8 +148,10 @@
     </property>
     <property name="font">
      <font>
-      <family>Hack</family>
-      <pointsize>15</pointsize>
+      <family>微软雅黑</family>
+      <pointsize>12</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
      </font>
     </property>
     <property name="text">
@@ -145,8 +163,8 @@
      <rect>
       <x>20</x>
       <y>70</y>
-      <width>91</width>
-      <height>31</height>
+      <width>100</width>
+      <height>25</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -157,15 +175,20 @@
     </property>
     <property name="font">
      <font>
-      <family>Hack</family>
-      <pointsize>15</pointsize>
+      <family>微软雅黑</family>
+      <pointsize>12</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
      </font>
     </property>
     <property name="text">
      <string>元件类型</string>
     </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_CellType">
+   <widget class="QLineEdit" name="ed_cell_type">
     <property name="geometry">
      <rect>
       <x>140</x>
@@ -176,8 +199,10 @@
     </property>
     <property name="font">
      <font>
-      <family>Hack</family>
-      <pointsize>11</pointsize>
+      <family>微软雅黑</family>
+      <pointsize>12</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
      </font>
     </property>
     <property name="alignment">
@@ -199,14 +224,16 @@
     <property name="font">
      <font>
       <family>Hack</family>
-      <pointsize>20</pointsize>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
     <property name="text">
      <string>Go</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_CellKey">
+   <widget class="QLineEdit" name="ed_cell_key">
     <property name="geometry">
      <rect>
       <x>140</x>
@@ -217,8 +244,10 @@
     </property>
     <property name="font">
      <font>
-      <family>Hack</family>
-      <pointsize>11</pointsize>
+      <family>微软雅黑</family>
+      <pointsize>12</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
      </font>
     </property>
     <property name="alignment">
@@ -233,8 +262,8 @@
      <rect>
       <x>20</x>
       <y>120</y>
-      <width>111</width>
-      <height>31</height>
+      <width>100</width>
+      <height>25</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -245,12 +274,17 @@
     </property>
     <property name="font">
      <font>
-      <family>Hack</family>
-      <pointsize>15</pointsize>
+      <family>微软雅黑</family>
+      <pointsize>12</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
      </font>
     </property>
     <property name="text">
      <string>元件属性</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="label_6">
@@ -258,8 +292,8 @@
      <rect>
       <x>20</x>
       <y>170</y>
-      <width>111</width>
-      <height>31</height>
+      <width>100</width>
+      <height>25</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -270,15 +304,20 @@
     </property>
     <property name="font">
      <font>
-      <family>Hack</family>
-      <pointsize>15</pointsize>
+      <family>微软雅黑</family>
+      <pointsize>12</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
      </font>
     </property>
     <property name="text">
      <string>预期属性值</string>
     </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_CellValue">
+   <widget class="QLineEdit" name="ed_cell_val">
     <property name="geometry">
      <rect>
       <x>140</x>
@@ -289,8 +328,10 @@
     </property>
     <property name="font">
      <font>
-      <family>Hack</family>
-      <pointsize>11</pointsize>
+      <family>微软雅黑</family>
+      <pointsize>12</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
      </font>
     </property>
     <property name="alignment">
@@ -329,12 +370,12 @@
   </action>
  </widget>
  <tabstops>
-  <tabstop>btn_chosefile</tabstop>
+  <tabstop>btn_fold</tabstop>
   <tabstop>btn_Go</tabstop>
-  <tabstop>lineEdit_rsc</tabstop>
-  <tabstop>lineEdit_CellType</tabstop>
-  <tabstop>lineEdit_CellKey</tabstop>
-  <tabstop>lineEdit_CellValue</tabstop>
+  <tabstop>ed_fold_path</tabstop>
+  <tabstop>ed_cell_type</tabstop>
+  <tabstop>ed_cell_key</tabstop>
+  <tabstop>ed_cell_val</tabstop>
   <tabstop>cb_orig_code</tabstop>
   <tabstop>cb_exp_code</tabstop>
  </tabstops>

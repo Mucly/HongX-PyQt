@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['callMWindos.py'],
-             pathex=['F:\\QT-Projects\\元件属性-replace'],
+             pathex=['F:\\QT-Projects\\----------可提案\\元件属性替换'],
              binaries=[],
              datas=[],
              hiddenimports=[],
@@ -22,7 +22,7 @@ exe = EXE(pyz,
           a.zipfiles,
           a.datas,
           name='callMWindos',
-          debug=True,
+          debug=False,
           strip=False,
           upx=True,
           runtime_tmpdir=None,

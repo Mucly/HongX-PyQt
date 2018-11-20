@@ -1,0 +1,293 @@
+ViewQMC:CtmFormView
+	left =90
+	top =150
+	right =left+580
+	bottom =top+300
+	wtype =0x8837
+	extag =10000
+  CtmImageBG:CtmImageBox
+    left =0
+    top =0
+ 		right =580+left
+		bottom =300+top
+		wtype =0x37
+		style =3
+		type =2
+		keycolor =0x0000
+		imagepath=res_tm640/HelpBG2.bmp
+  end
+	StaticQMC_MCSEnable:CtmStaticX2
+		left =120
+		top =52
+		right =115+left
+		bottom =22+top
+		wtype =0x30
+		fgc =0x0000
+		bgc =61375
+		arc =TRUE
+		textID =VW_QMC_MCSENABLE
+	end
+	StaticQMC_StandardSignal:CtmStaticX2
+		left =120
+		top =52+28
+		right =115+left
+		bottom =22+top
+		wtype =0x21
+		fgc =0x0000
+		bgc =61375
+		arc =TRUE
+		textID =VW_QMC_STANDARDSIGNAL
+	end
+	StaticQMC_KeyOn:CtmStaticX2
+		left =120+32
+		top =52+56
+		right =115+left
+		bottom =22+top
+		wtype =0x30
+		fgc =0x0000
+		bgc =61375
+		arc =TRUE
+		textID =VW_QMC_KEYON
+	end
+	StaticQMC_AdjMode:CtmStaticX2
+		left =120+32
+		top =52+80
+		right =115+left
+		bottom =22+top
+		wtype =0x30
+		fgc =0x0000
+		bgc =61375
+		arc =TRUE
+		textID =VW_QMC_ADJMODE
+	end
+	StaticQMC_ClsEnd:CtmStaticX2
+		left =120+32
+		top =52+104
+		right =115+left
+		bottom =22+top
+		wtype =0x30
+		fgc =0x0000
+		bgc =61375
+		arc =TRUE
+		textID =VW_QMC_CLSEND
+	end
+	StaticQMC_EjtRetEnd:CtmStaticX2
+		left =120+32
+		top =52+128
+		right =115+left
+		bottom =22+top
+		wtype =0x30
+		fgc =0x0000
+		bgc =61375
+		arc =TRUE
+		textID =VW_QMC_EJTRETEND
+	end
+	StaticQMC_NozleRetEnd:CtmStaticX2
+		left =120+32
+		top =52+152
+		right =115+left
+		bottom =22+top
+		wtype =0x30
+		fgc =0x0000
+		bgc =61375
+		arc =TRUE
+		textID =VW_QMC_NOZZLERETEND
+	end
+	StaticQMC_AllDoorsCls:CtmStaticX2
+		left =120+32
+		top =52+180
+		right =115+left
+		bottom =22+top
+		wtype =0x30
+		fgc =0x0000
+		bgc =61375
+		arc =TRUE
+		textID =VW_QMC_ALLDOORCLS
+	end
+	StaticQMC_OptionSignal:CtmStaticX2
+		left =330
+		top =52+28
+		right =115+left
+		bottom =22+top
+		wtype =0x21
+		fgc =0x0000
+		bgc =61375
+		arc =TRUE
+		textID =VW_QMC_OPTIONSIGNAL
+	end
+	StaticQMC_SafePlateOK:CtmStaticX2
+		left =330+32
+		top =52+56
+		right =115+left
+		bottom =22+top
+		wtype =0x30
+		fgc =0x0000
+		bgc =61375
+		arc =TRUE
+		textID =VW_QMC_SAFEPLATEOK
+	end
+	StaticQMC_HighPrsOK:CtmStaticX2
+		left =330+32
+		top =52+80
+		right =115+left
+		bottom =22+top
+		wtype =0x30
+		fgc =0x0000
+		bgc =61375
+		arc =TRUE
+		textID =VW_QMC_HIGHPRSOK
+	end
+	StaticQMC_MoldThickOK:CtmStaticX2
+		left =330+32
+		top =52+104
+		right =115+left
+		bottom =22+top
+		wtype =0x30
+		fgc =0x0000
+		bgc =61375
+		arc =TRUE
+		textID =VW_QMC_MOLDTHICKOK
+	end
+//edit start
+	editGROUP:CtmEditX1
+		left =0
+		top =0
+		right =0+left
+		bottom =0+top
+		taborder =-1
+		value=1
+	end
+//Standard signal
+	SelectBox_QMCENABLE:CtmSelectBox
+		left =120+140
+		top =52
+		right =16+left
+		bottom =18+top
+		wtype =0x37
+		fgc =0
+		group =0
+	end
+	SelectBoxPC11:CtmSelectBox
+		left =120+140
+		top =52+56
+		right =16+left
+		bottom =18+top
+		wtype =0x37
+		fgc =0
+		group =1
+	end
+	SelectBoxPC12:CtmSelectBox
+		left =120+140
+		top =52+80
+		right =16+left
+		bottom =18+top
+		wtype =0x37
+		fgc =0
+		group =2
+	end
+	SelectBoxPC13:CtmSelectBox
+		left =120+140
+		top =52+104
+		right =16+left
+		bottom =18+top
+		wtype =0x37
+		fgc =0
+		group =3
+	end
+	SelectBoxPC14:CtmSelectBox
+		left =120+140
+		top =52+128
+		right =16+left
+		bottom =18+top
+		wtype =0x37
+		fgc =0
+		group =4
+	end
+	SelectBoxPC15:CtmSelectBox
+		left =120+140
+		top =52+152
+		right =16+left
+		bottom =18+top
+		wtype =0x37
+		fgc =0
+		group =5
+	end
+	SelectBoxPC16:CtmSelectBox
+		left =120+140
+		top =52+180
+		right =16+left
+		bottom =18+top
+		wtype =0x37
+		fgc =0
+		group =6
+	end
+//Option Signal
+	SelectBoxPC17:CtmSelectBox
+		left =330+140
+		top =52+56
+		right =16+left
+		bottom =18+top
+		wtype =0x37
+		fgc =0
+		group =7
+	end
+	SelectBoxPC18:CtmSelectBox
+		left =330+140
+		top =52+80
+		right =16+left
+		bottom =18+top
+		wtype =0x37
+		fgc =0
+		group =8
+	end
+	SelectBoxPC19:CtmSelectBox
+		left =330+140
+		top =52+104
+		right =16+left
+		bottom =18+top
+		wtype =0x37
+		fgc =0
+		group =9
+	end
+//DC
+	SelectBoxPC20_EJTB:CtmSelectBox
+		left =0
+		top =0
+		right =0+left
+		bottom =0+top
+		wtype =0x37
+		fgc =0
+		group =10
+	end
+	SelectBoxPC21_NZLB:CtmSelectBox
+		left =120+170
+		top =52+152
+		right =16+left
+		bottom =18+top
+		wtype =0x37
+		fgc =0
+		group =11
+	end
+	btnOK:CtmToolButton
+		left =195-5
+		top =175+90
+		right =80+left
+		bottom =25+top
+		wtype =0x27
+		captionID =MSG_BOX_OK
+		buttontype =0
+		bgc =44733
+		fgc =0x0
+	end
+	btnCancle:CtmToolButton
+		left =195+120
+		top =175+90
+		right =80+left
+		bottom =25+top
+		wtype =0x27
+		captionID =MSG_BOX_CANCEL
+		buttontype =0
+		bgc =44733
+		fgc =0x0
+	end
+end

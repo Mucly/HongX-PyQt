@@ -15,7 +15,7 @@ class MainForm(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
 
         self.initUi()
-        self.initVariable()
+        self.initVar()
         self.initWidgets()
         self.initSlots()
 
@@ -31,13 +31,22 @@ class MainForm(QMainWindow, Ui_MainWindow):
   4、暂未加入进度提示功能")
         self.setFixedSize(self.width(), self.height())
 
-    def initVariable(self):
+    def initVar(self):
+        self._cellMap = {
+            "fold_path": self.ed_fold_path,  # key为保存到注册表的名字，后面是元件
+            "cell_type": self.ed_cell_type,
+            "cell_key": self.ed_cell_key,
+            "cell_val": self.ed_cell_val,
+        }
+
         self.code_list = ['utf-8', 'big5']
+        self.folderPath = None
+        self._settings = QSettings(
+            "TechMation\\Chenly\\Qt-tools", "pwndRplc")
+
+        self.readRegInfo()
 
     def initWidgets(self):
-        self.btn_chosefile.setEnabled(False)
-        self.btn_chosefile.setToolTip('暂未加入此功能')
-
         self.cb_orig_code.addItems(self.code_list)
         self.cb_orig_code.setToolTip('最原始文档一般为big5，选择错误的编码会导致注释乱码')
 
@@ -45,21 +54,37 @@ class MainForm(QMainWindow, Ui_MainWindow):
         self.cb_exp_code.setToolTip('No prompt')
 
     def rplCellAttr(self):
-        if (os.path.exists(self.lineEdit_rsc.text()) and self.lineEdit_CellType.text() != ''
-                and self.lineEdit_CellKey.text() != ''):
-            self.btn_Go.setEnabled(False)
-            rplcCell(self.lineEdit_rsc.text(), self.lineEdit_CellType.text(),
-                     self.lineEdit_CellKey.text(), self.lineEdit_CellValue.text(), self.cb_orig_code.currentText(), self.cb_exp_code.currentText())
+        if (os.path.exists(self.folderPath)
+            and self.ed_cell_type.text() != ''
+                and self.ed_cell_key.text() != ''):
+            # 执行替换函数
+            rplcCell(self.folderPath, self.ed_cell_type.text(),
+                     self.ed_cell_key.text(), self.ed_cell_val.text(),
+                     self.cb_orig_code.currentText(),
+                     self.cb_exp_code.currentText())
             QMessageBox.about(self, '提示', '已在桌面生成form文件夹！')
-            self.btn_Go.setEnabled(True)
+            self.writeInfo2Reg()
         else:
             QMessageBox.about(self, 'about', '请输入正确的数据')
 
+    def getFolder(self):
+        self.folderPath = QFileDialog.getExistingDirectory(
+            self, "选取文件夹", "./")  # 起始路径
+        self.ed_fold_path.setText(self.folderPath)
+
+    def readRegInfo(self):  # Chenly 2018-09-07 读取配置信息
+        for key, value in self._cellMap.items():
+            if self._settings.value(key) is not None:
+                value.setText(self._settings.value(key))
+
+    def writeInfo2Reg(self):   # Chenly 2018-09-07 保存配置信息
+        for key, value in self._cellMap.items():
+            self._settings.setValue(key, QVariant(value.text()))
+
     def initSlots(self):
-        # self.lineEdit_rsc.setText(
-        # r'V:\pxammi\7HT_3354_M12InjCur-nk\res_tm640\form')  #　just for test
         self.actionClose_Esc.triggered.connect(self.close)
         self.btn_Go.clicked.connect(self.rplCellAttr)
+        self.btn_fold.clicked.connect(self.getFolder)
 
 
 if __name__ == "__main__":

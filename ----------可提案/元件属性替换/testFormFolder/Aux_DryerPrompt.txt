@@ -1,0 +1,20 @@
+ViewAuxiliary:CtmFormView
+  left =0
+  top =0
+  right =799
+  bottom =430
+  wtype =48
+  titleID =VW_AUXILIARY_DRYEROPT
+  printname =Auxiliary_Promp.bmp
+  StaticAuxiliary_Prompt:CtmStaticX2
+    left =65
+    top =76
+    right =704
+    bottom =328
+    wtype =48
+	fgc =0x0000
+	bgc =61375
+    fontsize =2
+    textID =VW_AUXILIARY_DRYER_PROMPT
+  end
+end

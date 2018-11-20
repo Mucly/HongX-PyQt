@@ -1,0 +1,241 @@
+ViewAuxiliary:CtmFormView
+  left =0
+  top =0
+  right =799
+  bottom =430
+  wtype =48
+  titleID =VW_AUXILIARY_DRYEROPT
+  printname =Aux_Dry.bmp
+  editGROUP:CtmEditX1
+    left =0
+    top =0
+    right =0
+    bottom =0
+    taborder =-1
+    align =0
+    value =3
+  end
+  Static_colorbg_con1:CtmStaticX2
+    left =165
+    top =32
+    right =312
+    bottom =400
+    wtype =33
+    bgc =57150
+    colorcontrol =16
+    colorchange =46
+  end
+  StaticDryer_SetTemp:CtmStaticX2
+    left =10
+    top =110
+    right =160
+    bottom =135
+    wtype =33
+    fgc =0
+    bgc =61375
+    fontsize =2
+    textID =VW_AUXILIARY_SETTEMP
+  end
+  editDryer_SetTemp:CtmEditX1
+    left =170
+    top =110
+    right =270
+    bottom =135
+    wtype =33
+    taborder =11
+    bgc =38395
+    fontsize =2
+    colorcontrol =4
+    destcolor =57182
+    maxchar =10
+    align =0
+    mindb =FALSE
+    maxdb =FALSE
+    maxid =SYSX_OTHERS_OTHERS_INT_RESERVED175
+    dbid1 =SYSX_OTHERS_OTHERS_INT_RESERVED172
+    dbid2 =SYSX_OTHERS_OTHERS_INT_RESERVED173
+  end
+  imageBackGround1:CtmImageBox
+    left =610
+    top =50
+    right =613
+    bottom =380
+    wtype =48
+    type =2
+    style =3
+    imagepath =res_tm640/line.bmp
+    keycolor =63519
+  end
+  StaticDryer_RealTemp:CtmStaticX2
+    left =10
+    top =80
+    right =160
+    bottom =105
+    wtype =33
+    fgc =0
+    bgc =61375
+    fontsize =2
+    textID =VW_AUXILIARY_REALTEMP
+  end
+  editDryer_RealTemp:CtmEditX1
+    left =170
+    top =80
+    right =270
+    bottom =105
+    wtype =33
+    fontsize =2
+    colorcontrol =4
+    destcolor =57182
+    maxchar =10
+    align =0
+    dbid0 =SYSX_OTHERS_OTHERS_INT_RESERVED174
+  end
+  StaticUNIT:CtmStaticX2
+    left =277
+    top =80
+    right =312
+    bottom =102
+    wtype =48
+    fgc =6701
+    fontsize =2
+    textID =VW_TEMPCURVE_TEMPC
+  end
+  btnDryer_Power:CtmToolButton
+    left =434
+    top =50
+    right =546
+    bottom =75
+    wtype =0x27
+    taborder =12
+    bgc =44733
+    fontsize =2
+    buttontype =0
+    captionID =VW_AUXILIARY_POWERON/OFF
+  end
+  SelectBoxSTATE10_POWER:CtmSelectBox
+    left =410
+    top =52
+    right =426
+    bottom =72
+    wtype =55
+    fgc =0
+    group =5
+  end
+  StaticDryer_FAN:CtmStaticX2
+    left =625
+    top =54
+    right =765
+    bottom =74
+    wtype =48
+    fgc =6701
+    fontsize =2
+    textID =VW_AUXILIARY_FAN
+  end
+  StaticDryer_HEATING:CtmStaticX2
+    left =625
+    top =84
+    right =765
+    bottom =104
+    wtype =48
+    fgc =6701
+    fontsize =2
+    textID =VW_AUXILIARY_HEATING
+  end
+  StaticDryer_TRIP:CtmStaticX2
+    left =625
+    top =114
+    right =765
+    bottom =134
+    wtype =48
+    fgc =6701
+    fontsize =2
+    textID =VW_AUXILIARY_TRIP
+  end
+  SelectBoxSTATE11_FAN:CtmSelectBox
+    left =768
+    top =54
+    right =784
+    bottom =72
+    wtype =55
+    fgc =0
+    group =1
+  end
+  SelectBoxSTATE12_HEATING:CtmSelectBox
+    left =768
+    top =84
+    right =784
+    bottom =104
+    wtype =55
+    fgc =0
+    group =2
+  end
+  SelectBoxSTATE13_TRIP:CtmSelectBox
+    left =768
+    top =114
+    right =784
+    bottom =134
+    wtype =55
+    fgc =0
+    group =3
+  end
+  StaticDryer_ALARM:CtmStaticX2
+    left =625
+    top =144
+    right =765
+    bottom =164
+    wtype =48
+    fgc =6701
+    fontsize =2
+    textID =VW_PARAMETER1_ALARM
+  end
+  SelectBoxSTATE14_ALARM:CtmSelectBox
+    left =768
+    top =144
+    right =784
+    bottom =164
+    wtype =55
+    fgc =0
+    group =4
+  end
+  LinuxCtmStaticX21:CtmStaticX2
+    left =277
+    top =110
+    right =312
+    bottom =132
+    wtype =48
+    fgc =6701
+    fontsize =2
+    textID =VW_TEMPCURVE_TEMPC
+  end
+  StaticDry_NODEID:CtmStaticX2
+    left =10
+    top =50
+    right =160
+    bottom =75
+    wtype =33
+    fgc =0
+    bgc =61375
+    fontsize =2
+    textID =VW_AUXILIARY_COMUNITNUM
+  end
+  edit_ComUnitNum:CtmEditX1
+    left =170
+    top =50
+    right =270
+    bottom =75
+    wtype =33
+    taborder =10
+    bgc =38395
+    fontsize =2
+    colorcontrol =4
+    destcolor =57182
+    maxchar =10
+    align =0
+    min =11
+    max =12
+    mindb =FALSE
+    maxdb =FALSE
+    dbid0 =SYSX_OTHERS_OTHERS_BYTE_RESERVED220
+    dbid1 =SYSX_OTHERS_OTHERS_BYTE_RESERVED63
+  end
+end
