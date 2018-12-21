@@ -15,7 +15,7 @@ class MainForm(QMainWindow, Ui_MainWindow):
         super(MainForm, self).__init__()
         # pass
         self.setupUi(self)
-        self.setWindowTitle("字体自动替换工具 -- Muc")
+        self.setWindowTitle("出货字串自动替换工具 - Muc")
         self.setWindowIcon(QIcon('../images/doge.jpg'))
         """ global variable """
         # button_54_clicked    = 0    # 后续以flag区分，缩短代码量，增加可读性
