@@ -34,13 +34,13 @@ class MainForm(QMainWindow, Ui_MainWindow):
 
     # Chenly 2018-09-07 读取配置信息
     def rdReg(self):  # #1 PART3
-        for key, value in self.__cellMap.items():
-            value.setText(self.__settings.value(key))
+        for key, value in self.cellMap.items():
+            value.setText(self.settings.value(key))
 
     # Chenly 2018-09-07 保存配置信息
     def wr2Reg(self):  # #1 PART4
-        for key, value in self.__cellMap.items():
-            self.__settings.setValue(key, QVariant(value.text()))
+        for key, value in self.cellMap.items():
+            self.settings.setValue(key, QVariant(value.text()))
 
     # 通过注册表获取桌面路径
     def getDeskTop(self):
@@ -58,11 +58,11 @@ class MainForm(QMainWindow, Ui_MainWindow):
 
     def initVar(self):
         # 注册表#1 PART1
-        self.__settings = QSettings(
+        self.settings = QSettings(
             "TechMation\\Muc\\tools", "undefined")
 
         # 映射表 #1 PART2
-        self.__cellMap = {
+        self.cellMap = {
             "firm": self.firm,
             "vers": self.vers,
             "progm_store": self.progm_store,
@@ -74,6 +74,13 @@ class MainForm(QMainWindow, Ui_MainWindow):
 
     def initWidgets(self):
         pass
+
+    def fileAndFolder(self):
+        folderVar = QFileDialog.getExistingDirectory(
+            self, "选取文件夹", "./")  # 起始路径
+
+        fileVar = QFileDialog.getOpenFileName(
+            self, "Open File Dialog", "/", "Python files(*.py);;Text files(*.txt)")  # 两个分号是换行效果，同时表示可选前后两种类型文件，括号里限制类型，返回一个tuple(path，fileFilter)
 
     # 根据当前系统日期设置时间 A-10， B-11， C-12 ...
     def setCurDate(self):
