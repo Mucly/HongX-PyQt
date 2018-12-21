@@ -8,6 +8,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+
 class Ui_MainForm(object):
     def setupUi(self, MainForm):
         MainForm.setObjectName("MainForm")
@@ -41,7 +42,7 @@ class Ui_MainForm(object):
         _translate = QtCore.QCoreApplication.translate
         MainForm.setWindowTitle(_translate("MainForm", "Form"))
         self.btn_F2U.setText(_translate("MainForm", "生成F2U.c\n"
-"（需0.5-3s）"))
-        self.label.setText(_translate("MainForm", "<html><head/><body><p><span style=\" font-size:16pt; color:#d8006c;\">使用前</span>请将出货的字串文件夹中占用空间最大的C20文件放至桌面！</p><p>例：将String_20180416145339（字串文件夹名字）中的xFontjpn.C20</p><p>（注：所有C20文件中占用空间最大）放至桌面</p></body></html>"))
+                                        "（需0.5-3s）"))
+        self.label.setText(_translate(
+            "MainForm", "<html><head/><body><p><span style=\" font-size:16pt; color:#d8006c;\">使用前</span>请将出货的字串文件夹中占用空间最大的C20文件放至桌面！</p><p>例：将String_20180416145339（字串文件夹名字）中的xFontjpn.C20</p><p>（注：所有C20文件中占用空间最大）放至桌面</p></body></html>"))
         self.label_2.setText(_translate("MainForm", "仅供内部交流使用 -- Chenly"))
-

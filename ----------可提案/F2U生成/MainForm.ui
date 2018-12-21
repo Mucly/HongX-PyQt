@@ -1,77 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainForm</class>
- <widget class="QWidget" name="MainForm">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>472</width>
-    <height>319</height>
-   </rect>
-  </property>
-  <property name="windowTitle">
-   <string>Form</string>
-  </property>
-  <widget class="QPushButton" name="btn_F2U">
-   <property name="geometry">
-    <rect>
-     <x>140</x>
-     <y>40</y>
-     <width>201</width>
-     <height>101</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Hack</family>
-     <pointsize>23</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>生成F2U.c
-（需0.5-3s）</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>140</y>
-     <width>461</width>
-     <height>101</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Hack</family>
-     <pointsize>10</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; color:#d8006c;&quot;&gt;使用前&lt;/span&gt;请将出货的字串文件夹中占用空间最大的C20文件放至桌面！&lt;/p&gt;&lt;p&gt;例：将String_20180416145339（字串文件夹名字）中的xFontjpn.C20&lt;/p&gt;&lt;p&gt;（注：所有C20文件中占用空间最大）放至桌面&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_2">
-   <property name="geometry">
-    <rect>
-     <x>130</x>
-     <y>280</y>
-     <width>341</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Hack</family>
-     <pointsize>15</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>仅供内部交流使用 -- Chenly</string>
-   </property>
-  </widget>
- </widget>
- <resources/>
- <connections/>
+    <class>MainForm</class>
+    <widget class="QWidget" name="MainForm">
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>472</width>
+                <height>319</height>
+            </rect>
+        </property>
+        <property name="windowTitle">
+            <string>Form</string>
+        </property>
+        <widget class="QPushButton" name="btn_F2U">
+            <property name="geometry">
+                <rect>
+                    <x>140</x>
+                    <y>40</y>
+                    <width>201</width>
+                    <height>101</height>
+                </rect>
+            </property>
+            <property name="font">
+                <font>
+                    <family>Hack</family>
+                    <pointsize>23</pointsize>
+                </font>
+            </property>
+            <property name="text">
+                <string>生成F2U.c
+                    （需0.5-3s）</string>
+            </property>
+        </widget>
+        <widget class="QLabel" name="label">
+            <property name="geometry">
+                <rect>
+                    <x>10</x>
+                    <y>140</y>
+                    <width>461</width>
+                    <height>101</height>
+                </rect>
+            </property>
+            <property name="font">
+                <font>
+                    <family>Hack</family>
+                    <pointsize>10</pointsize>
+                </font>
+            </property>
+            <property name="text">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; color:#d8006c;&quot;&gt;使用前&lt;/span&gt;请将出货的字串文件夹中占用空间最大的C24文件放至桌面！&lt;/p&gt;&lt;p&gt;例：将String_20180416145339（字串文件夹名字）中的xFontjpn.C20&lt;/p&gt;&lt;p&gt;（注：所有C20文件中占用空间最大）放至桌面&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+        </widget>
+        <widget class="QLabel" name="label_2">
+            <property name="geometry">
+                <rect>
+                    <x>130</x>
+                    <y>280</y>
+                    <width>341</width>
+                    <height>21</height>
+                </rect>
+            </property>
+            <property name="font">
+                <font>
+                    <family>Hack</family>
+                    <pointsize>15</pointsize>
+                </font>
+            </property>
+            <property name="text">
+                <string>仅供内部交流使用 -- Chenly</string>
+            </property>
+        </widget>
+    </widget>
+    <resources />
+    <connections />
 </ui>

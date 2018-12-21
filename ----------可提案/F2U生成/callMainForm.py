@@ -42,7 +42,7 @@ class MainWindos(QWidget, Ui_MainForm):
             jpnC20_file = open(C20_file_bigest, 'r')
             f2u_file = open(desk_path + os.sep + 'F2U.c', 'w+')
 
-            HOF = '#include "F2U.h"\nFONT2UNICODE	Font2Unicode[]=\n{\n'
+            HOF = '#include "F2U.h"\nFONT2UNICODE   Font2Unicode[]=\n{\n'
 
             EOF = '};'
 
@@ -51,7 +51,7 @@ class MainWindos(QWidget, Ui_MainForm):
             f2u_file.write(HOF)
             for c20line in jpnC20_file.readlines():
                 if (re.search(chines_pattern, c20line)):
-                    temp = '	{' + re.search(chines_pattern, c20line).group(2) + ',' + re.search(
+                    temp = '    {' + re.search(chines_pattern, c20line).group(2) + ',' + re.search(
                         chines_pattern, c20line).group(4) + '}' + ',' + '\n'
                     f2u_file.write(temp)
             f2u_file.write(EOF)
@@ -69,6 +69,7 @@ class MainWindos(QWidget, Ui_MainForm):
                                         self.tr("F2U.c已在桌面生成!"), QMessageBox.Yes)
         if reply == QMessageBox.Yes:
             self.close()
+
 
 if __name__ == '__main__':
 
