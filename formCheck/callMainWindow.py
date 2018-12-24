@@ -48,6 +48,7 @@ class MainForm(QMainWindow, Ui_MainWindow):
     def wrEleLog(self, file, el):
         self.ele_log.append(f"{file} ----- {el}")
 
+    # 初始化变量内容
     def initVar(self):
         # log日志
         self.tabLog = ['\n----------如下文件，taborder重复，请核实处理----------\n']
@@ -128,6 +129,7 @@ class MainForm(QMainWindow, Ui_MainWindow):
 
     # --- 设置edit元件内容 ---
     def setCfgEdit(self):
+        self.initVar()
         explorer = "./"
         cfg_path = self.edCfg.text()
         if (os.path.exists(cfg_path)):
