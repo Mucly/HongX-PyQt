@@ -100,7 +100,7 @@ class MainForm(QMainWindow, Ui_MainWindow):
                     if "//" not in line:
                         _, _, val = line.partition("=")
                         # 因为有taborder = 5+1这种骚写法，故须做eval处理
-                        if (int(eval(val)) >= 0):
+                        if (int(eval(val)) >= 0):  # taborder为负数代表不可编辑，所以不用加判断
                             if not(val in order_list):
                                 order_list.append(val)
                             else:
@@ -171,7 +171,7 @@ class MainForm(QMainWindow, Ui_MainWindow):
 
             except Exception as e:
                 QMessageBox.critical(
-                    self, "错误 #2", "路径丢失或错误，请检查所选的config文件中，FormPath和FormlibPath内容")
+                    self, "错误 #2", "路径丢失或错误，请检查所选的config文件中，FormPath和FormlibPath的内容")
             else:
                 self.wr2Reg()
                 self.showResult()  # 如果一切正常，展示测试结果
@@ -179,7 +179,7 @@ class MainForm(QMainWindow, Ui_MainWindow):
                 pass
         else:
             QMessageBox.critical(
-                self, "错误 #1", "请先选择config配置文件")
+                self, "错误 #1", "config.ini文件路径无效，请选择或确认路径是否有效")
 
     def initSlots(self):
         # shotcut
