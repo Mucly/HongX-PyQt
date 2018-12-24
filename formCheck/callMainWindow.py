@@ -3,11 +3,13 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from formCheck import Ui_MainWindow
-from rstDialog import Ui_Dialog
+from rstWidget import Ui_rst
+from dbid0Widget import Ui_dbid0
+
 import os
 import sys
 import time
-import re
+# import re
 
 
 class MainForm(QMainWindow, Ui_MainWindow):
@@ -58,7 +60,7 @@ class MainForm(QMainWindow, Ui_MainWindow):
 
         # 全局
         self.so_list = []
-        self.dbid0_map = {}
+        self.dbid0_dict = {}
 
         # 文件路径
         self.so_path = ""  # formlib文件夹路径
@@ -123,11 +125,17 @@ class MainForm(QMainWindow, Ui_MainWindow):
                             ele_list.append(el)
                         else:
                             self.wrEleLog(file, el)
+                    elif "dbid0" in line:
+                        _, _, dbid0 = line.partition("=")
+                        # 创建全局dbid0字典，假使key不存在则以数组的形式创建
+                        if not self.dbid0_dict.get(dbid0):
+                            self.dbid0_dict[dbid0] = []
+                        self.dbid0_dict[dbid0].append(file)
 
         if not get_title:
             self.wrTitleLog(file)
 
-    # --- 设置edit元件内容 ---
+    # 设置config文件路径
     def setCfgEdit(self):
         self.initVar()
         explorer = "./"
@@ -140,29 +148,36 @@ class MainForm(QMainWindow, Ui_MainWindow):
         if tmp:
             self.edCfg.setText(tmp)
 
+    # 设置config文件的上级路径
     def setBasePath(self, cfg_path):
         inx = cfg_path.find("config")
         self.base_path = cfg_path[0: inx - 1]  # 减1是因为config前面还有个'/'特殊符号
 
     # 注册表信息读取
     def rdReg(self):
-        for key, value in self.cell_map.items():
-            value.setText(self.settings.value(key))
+        for k, v in self.cell_map.items():
+            v.setText(self.settings.value(k))
 
     # 注册表信息保存
     def wr2Reg(self):
-        for key, value in self.cell_map.items():
-            self.settings.setValue(key, QVariant(value.text()))
+        for k, v in self.cell_map.items():
+            self.settings.setValue(k, QVariant(v.text()))
 
-    def showResult(self):
-        rst_ui.qList = self.tabLog + self.soLog + self.titleLog + self.ele_log
-        slm = QStringListModel(rst_ui.qList)
-
-        rst_ui.listViewResult.setModel(slm)
-        rst_ui.listViewResult.doubleClicked.connect(rst_ui.fileLinkClicked)
+    # 展示rstui
+    def showRstUI(self):
+        content_list = self.tabLog + self.soLog + self.titleLog + self.ele_log
+        rst_ui.setTabContent(content_list)
         rst_ui.show()
 
-    # 主要操作，遍历form下的文件并判断文件内容
+    # 展示dbid0ui
+    def showDbid0UI(self):
+        for k, v in self.dbid0_dict.items():
+            if len(v) > 1:
+                pass
+
+        dbid0_ui.show()
+
+    # 根据所有信息，遍历form下的文件并判断文件内容
     def trvFolder(self):
         cfg_path = self.edCfg.text()
         if (os.path.exists(cfg_path)):
@@ -194,7 +209,8 @@ class MainForm(QMainWindow, Ui_MainWindow):
                     self, "错误 #2", f"路径丢失或错误，请检查所选的config文件中，FormPath和FormlibPath的内容\n{e}")
             else:
                 self.wr2Reg()
-                self.showResult()  # 如果一切正常，展示测试结果
+                self.showRstUI()
+                # self.showDbid0UI()
             finally:
                 pass
         else:
@@ -210,21 +226,57 @@ class MainForm(QMainWindow, Ui_MainWindow):
         self.pbtCheck.clicked.connect(self.trvFolder)  # 点击check按钮
 
 
-class RstForm(QDialog, Ui_Dialog):
+class RstForm(QWidget, Ui_rst):
 
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+        self.initUI()
 
-    def fileLinkClicked(self, QModelIndex):
-        file, _, _ = self.qList[QModelIndex.row()].partition(
+    def initUI(self):
+        self.move(100, 100)  # 以左上角为基准，将窗口移动到屏幕的中间位置
+        self.setFixedSize(self.width(), self.height())  # 窗口无法拖动
+
+    # 为列表内的file设置click link
+    def fileClink(self, QModelIndex):
+        file, _, _ = self.rst_list[QModelIndex.row()].partition(
             " ----- ")  # 这个partition里的参数需按照列表里的来
         file = file.strip()
         if os.path.exists(file):
             time.sleep(0.5)  # 为防止列表当前行焦点丢失，故需要在文件打开前加入sleep
             os.startfile(file)
 
-    def foo(self):
+    # 设置表格内容
+    def setTabContent(self, content_list):
+        rst_ui.rst_list = content_list
+        slm = QStringListModel(rst_ui.rst_list)
+
+        rst_ui.listViewRst.setModel(slm)
+        rst_ui.listViewRst.doubleClicked.connect(rst_ui.fileClink)
+
+
+class DBID0Form(QWidget, Ui_dbid0):
+
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+        self.initUI()
+
+    def initUI(self):
+        self.move(400, 100)  # 以左上角为基准，将窗口移动到屏幕的中间位置
+        self.setFixedSize(self.width(), self.height())  # 窗口无法拖动
+
+    # 为列表内的file设置click link
+    def fileClink(self, QModelIndex):
+        file, _, _ = self.dbid0_list[QModelIndex.row()].partition(
+            " ----- ")  # 这个partition里的参数需按照列表里的来
+        file = file.strip()
+        if os.path.exists(file):
+            time.sleep(0.5)  # 为防止列表当前行焦点丢失，故需要在文件打开前加入sleep
+            os.startfile(file)
+
+    # 设置表格内容
+    def setTabContent(self, d):
         pass
 
 if __name__ == "__main__":
@@ -232,7 +284,9 @@ if __name__ == "__main__":
     # 实例化主窗口
     main_ui = MainForm()
     main_ui.show()
+
     # 实例化子窗口
-    rst_ui = RstForm()
+    rst_ui = RstForm()  # taborder、元件名、so、titleID验证结果窗口
+    # dbid0_ui = DBID0Form()  # dbid0验证结果窗口
 
     sys.exit(app.exec())
