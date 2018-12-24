@@ -49,14 +49,17 @@ class MainForm(QMainWindow, Ui_MainWindow):
         self.ele_log.append(f"{file} ----- {el}")
 
     def initVar(self):
+        # log日志
         self.tabLog = ['\n----------如下文件，taborder重复，请核实处理----------\n']
         self.soLog = ['\n\n----------如下文件，所映射的so文件丢失，请核实处理----------\n']
         self.titleLog = ["\n\n----------如下文件，titleID丢失，请核实处理----------\n"]
         self.ele_log = ["\n\n----------如下文件，元件名重复，请核实处理----------\n"]
 
+        # 全局
         self.so_list = []
         self.dbid0_map = {}
 
+        # 文件路径
         self.so_path = ""  # formlib文件夹路径
         self.form_path = ""  # form文件夹路径
         self.cfg_path = ""  # config.ini文件路径
