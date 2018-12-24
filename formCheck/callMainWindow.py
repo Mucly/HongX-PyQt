@@ -3,13 +3,96 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from formCheck import Ui_MainWindow
-from rstWidget import Ui_rst
-from dbid0Widget import Ui_dbid0
+from checkRstTab import Ui_rst
 
 import os
 import sys
 import time
-# import re
+
+
+class SubForm(QWidget, Ui_rst):
+
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+        self.initUi()
+
+    def initUi(self):
+        pass
+        # self.setFixedSize(self.width(), self.height())
+
+    # listView元件内的列表文件，双击后可调用默认软件打开该文件
+    def listViewClink(self, QModelIndex):
+        file, _, _ = QModelIndex.data().partition(" ----- ")  # 这个partition里的参数需按照列表里的来
+        file = file.strip()
+        if os.path.exists(file):
+            time.sleep(0.5)  # 为防止列表当前行焦点丢失，故需要在文件打开前加入sleep
+            os.startfile(file)
+
+    def tabWidgetClink(self):
+        pass
+
+    # 设置title标签页内容
+    def setTitleTab(self, content_list):
+        if content_list:
+            self.title_list = content_list
+        else:
+            self.title_list = ["恭喜，该项未验证到问题"]
+        slm = QStringListModel(self.title_list)  # TODO same
+
+        self.listViewTitleID.setModel(slm)  # TODO same
+        self.listViewTitleID.doubleClicked.connect(self.listViewClink)
+
+    # 设置so标签页内容
+    def setSoTab(self, content_list):
+        if content_list:
+            self.so_list = content_list
+        else:
+            self.so_list = ["恭喜，该项未验证到问题"]
+
+        slm = QStringListModel(self.so_list)
+
+        self.listViewSo.setModel(slm)
+        self.listViewSo.doubleClicked.connect(self.listViewClink)
+
+    # 设置taborder标签页内容
+    def setTaborderTab(self, content_list):
+        if content_list:
+            self.tab_list = content_list
+        else:
+            self.tab_list = ["恭喜，该项未验证到问题"]
+        slm = QStringListModel(self.tab_list)
+
+        self.listViewTaborder.setModel(slm)
+        self.listViewTaborder.doubleClicked.connect(self.listViewClink)
+
+    # 设置pwnd标签页内容
+    def setPwndTab(self, content_list):
+        if content_list:
+            self.pwnd_list = content_list
+        else:
+            self.pwnd_list = ["恭喜，该项未验证到问题"]
+        slm = QStringListModel(self.pwnd_list)
+
+        self.listViewPwnd.setModel(slm)
+        self.listViewPwnd.doubleClicked.connect(self.listViewClink)
+
+    def setDBID0Tab(self, d):
+        cols = 3  # 初始化列数，重复的数据最起码有三列
+        rows = 0  # 初始化行数
+        for k, v in d.items():
+            cnt = len(v) + 1  # 生成的col必须额外加一列DBID0的数据，所以取得的v还要加个1
+            if cnt > 2:
+                # 设置最大列数
+                if cnt > cols:
+                    cols = cnt
+
+                rows += 1
+
+        # self.tableWidgetDBID0.setColumnCount(cols)
+        # self.tableWidgetDBID0.setRowCount(rows)
+        # self.tableWidgetDBID0.setHorizontalHeaderLabels(['a'])
+        # self.tableWidgetDBID0.setItem(0, 0, QTableWidgetItem("asd"))
 
 
 class MainForm(QMainWindow, Ui_MainWindow):
@@ -26,7 +109,7 @@ class MainForm(QMainWindow, Ui_MainWindow):
     def initUi(self):
         self.status = self.statusBar()
         self.status.setLayoutDirection(Qt.RightToLeft)
-        self.status.showMessage('仅供内部学习交流使用 -- Muc v0.0.2')
+        self.status.showMessage('仅供内部学习交流使用 -- Muc v1.0.0')
         self.setFixedSize(self.width(), self.height())
 
     # 通过注册表获取桌面路径
@@ -47,20 +130,20 @@ class MainForm(QMainWindow, Ui_MainWindow):
     def wrTitleLog(self, file):
         self.titleLog.append(f"{file}")
 
-    def wrEleLog(self, file, el):
-        self.ele_log.append(f"{file} ----- {el}")
+    def wrPwndLog(self, file, pwnd):
+        self.pwnd_log.append(f"{file} ----- {pwnd}")
 
     # 初始化变量内容
     def initVar(self):
         # log日志
-        self.tabLog = ['\n----------如下文件，taborder重复，请核实处理----------\n']
-        self.soLog = ['\n\n----------如下文件，所映射的so文件丢失，请核实处理----------\n']
-        self.titleLog = ["\n\n----------如下文件，titleID丢失，请核实处理----------\n"]
-        self.ele_log = ["\n\n----------如下文件，元件名重复，请核实处理----------\n"]
+        self.tabLog = []
+        self.soLog = []
+        self.titleLog = []
+        self.pwnd_log = []
 
         # 全局
         self.so_list = []
-        self.dbid0_dict = {}
+        self.dbid0_dict = {}  # {DBID0_CONTENT : [View1.txt, View2.txt, ...]}
 
         # 文件路径
         self.so_path = ""  # formlib文件夹路径
@@ -82,7 +165,7 @@ class MainForm(QMainWindow, Ui_MainWindow):
         file = os.path.join(self.form_path, file)  # 绝对路径
         file = file.replace('\\', '/')
 
-        ele_list = []  # 元件名列表
+        pwnd_list = []  # 元件名列表
         order_list = []  # 画面内，所有taborder的值的集合
         so_val_list = ["CtmFormView", "CtmMainFrame",
                        "CtmWndSplash"]     # 画面脚本内，画面so对应的值
@@ -120,11 +203,11 @@ class MainForm(QMainWindow, Ui_MainWindow):
                             else:
                                 self.wrTabLog(file, line)
                     elif ":" in line:
-                        el, _, _ = line.partition(":")
-                        if el not in ele_list:
-                            ele_list.append(el)
+                        pwnd, _, _ = line.partition(":")
+                        if pwnd not in pwnd_list:
+                            pwnd_list.append(pwnd)
                         else:
-                            self.wrEleLog(file, el)
+                            self.wrPwndLog(file, pwnd)
                     elif "dbid0" in line:
                         _, _, dbid0 = line.partition("=")
                         # 创建全局dbid0字典，假使key不存在则以数组的形式创建
@@ -163,21 +246,7 @@ class MainForm(QMainWindow, Ui_MainWindow):
         for k, v in self.cell_map.items():
             self.settings.setValue(k, QVariant(v.text()))
 
-    # 展示rstui
-    def showRstUI(self):
-        content_list = self.tabLog + self.soLog + self.titleLog + self.ele_log
-        rst_ui.setTabContent(content_list)
-        rst_ui.show()
-
-    # 展示dbid0ui
-    def showDbid0UI(self):
-        for k, v in self.dbid0_dict.items():
-            if len(v) > 1:
-                pass
-
-        dbid0_ui.show()
-
-    # 根据所有信息，遍历form下的文件并判断文件内容
+        # 根据所有信息，遍历form下的文件并判断文件内容
     def trvFolder(self):
         cfg_path = self.edCfg.text()
         if (os.path.exists(cfg_path)):
@@ -209,8 +278,15 @@ class MainForm(QMainWindow, Ui_MainWindow):
                     self, "错误 #2", f"路径丢失或错误，请检查所选的config文件中，FormPath和FormlibPath的内容\n{e}")
             else:
                 self.wr2Reg()
-                self.showRstUI()
-                # self.showDbid0UI()
+
+                # 呈现校验结果窗口
+                sub_ui.setTitleTab(self.titleLog)
+                sub_ui.setSoTab(self.soLog)
+                sub_ui.setTaborderTab(self.tabLog)
+                sub_ui.setPwndTab(self.pwnd_log)
+                sub_ui.setDBID0Tab(self.dbid0_dict)
+                sub_ui.show()
+
             finally:
                 pass
         else:
@@ -225,60 +301,6 @@ class MainForm(QMainWindow, Ui_MainWindow):
         self.pbtCfg.clicked.connect(self.setCfgEdit)  # 点击config按钮
         self.pbtCheck.clicked.connect(self.trvFolder)  # 点击check按钮
 
-
-class RstForm(QWidget, Ui_rst):
-
-    def __init__(self):
-        super().__init__()
-        self.setupUi(self)
-        self.initUI()
-
-    def initUI(self):
-        self.move(100, 100)  # 以左上角为基准，将窗口移动到屏幕的中间位置
-        self.setFixedSize(self.width(), self.height())  # 窗口无法拖动
-
-    # 为列表内的file设置click link
-    def fileClink(self, QModelIndex):
-        file, _, _ = self.rst_list[QModelIndex.row()].partition(
-            " ----- ")  # 这个partition里的参数需按照列表里的来
-        file = file.strip()
-        if os.path.exists(file):
-            time.sleep(0.5)  # 为防止列表当前行焦点丢失，故需要在文件打开前加入sleep
-            os.startfile(file)
-
-    # 设置表格内容
-    def setTabContent(self, content_list):
-        rst_ui.rst_list = content_list
-        slm = QStringListModel(rst_ui.rst_list)
-
-        rst_ui.listViewRst.setModel(slm)
-        rst_ui.listViewRst.doubleClicked.connect(rst_ui.fileClink)
-
-
-class DBID0Form(QWidget, Ui_dbid0):
-
-    def __init__(self):
-        super().__init__()
-        self.setupUi(self)
-        self.initUI()
-
-    def initUI(self):
-        self.move(400, 100)  # 以左上角为基准，将窗口移动到屏幕的中间位置
-        self.setFixedSize(self.width(), self.height())  # 窗口无法拖动
-
-    # 为列表内的file设置click link
-    def fileClink(self, QModelIndex):
-        file, _, _ = self.dbid0_list[QModelIndex.row()].partition(
-            " ----- ")  # 这个partition里的参数需按照列表里的来
-        file = file.strip()
-        if os.path.exists(file):
-            time.sleep(0.5)  # 为防止列表当前行焦点丢失，故需要在文件打开前加入sleep
-            os.startfile(file)
-
-    # 设置表格内容
-    def setTabContent(self, d):
-        pass
-
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     # 实例化主窗口
@@ -286,7 +308,6 @@ if __name__ == "__main__":
     main_ui.show()
 
     # 实例化子窗口
-    rst_ui = RstForm()  # taborder、元件名、so、titleID验证结果窗口
-    # dbid0_ui = DBID0Form()  # dbid0验证结果窗口
+    sub_ui = SubForm()
 
     sys.exit(app.exec())
