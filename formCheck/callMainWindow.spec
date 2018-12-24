@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['callMainWindow.py'],
-             pathex=['E:\\专案项目\\自动测试工具\\Project\\formCheck-qt'],
+             pathex=['F:\\QT-Projects\\formCheck'],
              binaries=[],
              datas=[],
              hiddenimports=[],

@@ -64,7 +64,7 @@
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>60</y>
+       <y>50</y>
        <width>81</width>
        <height>16</height>
       </rect>
@@ -109,6 +109,34 @@
       <rect>
        <x>20</x>
        <y>30</y>
+       <width>91</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Hack</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>元件名</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="ckbTab_2">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>50</y>
        <width>91</width>
        <height>16</height>
       </rect>
@@ -187,7 +215,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Check</string>
+     <string>开始验证</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pbtCfg">
