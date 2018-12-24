@@ -86,13 +86,20 @@ class SubForm(QWidget, Ui_rst):
                 # 设置最大列数
                 if cnt > cols:
                     cols = cnt
-
+                # 设置总行数
                 rows += 1
 
-        # self.tableWidgetDBID0.setColumnCount(cols)
-        # self.tableWidgetDBID0.setRowCount(rows)
-        # self.tableWidgetDBID0.setHorizontalHeaderLabels(['a'])
-        # self.tableWidgetDBID0.setItem(0, 0, QTableWidgetItem("asd"))
+        # 必须先设置行、列数，不然数据无法显示
+        self.tableWidgetDBID0.setColumnCount(cols)
+        self.tableWidgetDBID0.setRowCount(rows)
+
+        for k, v in d.items():
+            cnt = len(v) + 1  # 生成的col必须额外加一列DBID0的数据，所以取得的v还要加个1
+            if cnt > 2:
+                pass
+
+        self.tableWidgetDBID0.setHorizontalHeaderLabels(['DBID0'])
+        self.tableWidgetDBID0.setItem(0, 0, QTableWidgetItem("功能完善中...敬请期待"))
 
 
 class MainForm(QMainWindow, Ui_MainWindow):
@@ -136,10 +143,10 @@ class MainForm(QMainWindow, Ui_MainWindow):
     # 初始化变量内容
     def initVar(self):
         # log日志
-        self.tabLog = []
-        self.soLog = []
-        self.titleLog = []
-        self.pwnd_log = []
+        self.tabLog = ["----------如下文件，taborder重复----------\n"]
+        self.soLog = ["----------如下文件，so文件丢失----------\n"]
+        self.titleLog = ["----------如下文件，titleID丢失----------\n"]
+        self.pwnd_log = ["----------如下文件，元件重复----------\n"]
 
         # 全局
         self.so_list = []
