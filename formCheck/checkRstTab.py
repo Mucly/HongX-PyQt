@@ -26,7 +26,7 @@ class Ui_rst(object):
         font.setKerning(True)
         self.tabWidget.setFont(font)
         self.tabWidget.setTabPosition(QtWidgets.QTabWidget.North)
-        self.tabWidget.setTabShape(QtWidgets.QTabWidget.Triangular)
+        self.tabWidget.setTabShape(QtWidgets.QTabWidget.Rounded)
         self.tabWidget.setIconSize(QtCore.QSize(20, 20))
         self.tabWidget.setElideMode(QtCore.Qt.ElideLeft)
         self.tabWidget.setDocumentMode(True)
