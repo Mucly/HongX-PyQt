@@ -150,7 +150,7 @@ class MainForm(QMainWindow, Ui_MainWindow):
     def initUi(self):
         self.status = self.statusBar()
         self.status.setLayoutDirection(Qt.RightToLeft)
-        self.status.showMessage('仅供内部学习交流使用 -- Muc v1.0.0')
+        self.status.showMessage('仅供内部学习交流使用 -- Muc v1.0.0 (2018-12-25)')
         # self.setFixedSize(self.width(), self.height())
 
     # 通过注册表获取桌面路径
