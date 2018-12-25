@@ -80,6 +80,7 @@ class Ui_MainWindow(object):
         font.setFamily("Hack")
         font.setPointSize(10)
         self.ckbDBID0.setFont(font)
+        self.ckbDBID0.setChecked(True)
         self.ckbDBID0.setObjectName("ckbDBID0")
         self.pbtCheck = QtWidgets.QPushButton(self.centralwidget)
         self.pbtCheck.setGeometry(QtCore.QRect(20, 180, 521, 31))

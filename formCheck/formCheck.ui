@@ -197,6 +197,9 @@
      <property name="text">
       <string>dbid0</string>
      </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
     </widget>
    </widget>
    <widget class="QPushButton" name="pbtCheck">

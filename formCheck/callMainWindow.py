@@ -10,7 +10,7 @@ import sys
 import time
 
 
-class SubForm(QWidget, Ui_rst):
+class RstForm(QWidget, Ui_rst):
 
     def __init__(self):
         super().__init__()
@@ -92,14 +92,27 @@ class SubForm(QWidget, Ui_rst):
         # 必须先设置行、列数，不然数据无法显示
         self.tableWidgetDBID0.setColumnCount(cols)
         self.tableWidgetDBID0.setRowCount(rows)
-
+        # 设置table title
+        tb_title = ["DBID0"] + ["file"] * cols
+        for i in range(len(tb_title)):
+            if i > 0:
+                tb_title[i] += str(i)
+        self.tableWidgetDBID0.setHorizontalHeaderLabels(tb_title)
+        # 设置table data
+        rowx = 0
         for k, v in d.items():
-            cnt = len(v) + 1  # 生成的col必须额外加一列DBID0的数据，所以取得的v还要加个1
-            if cnt > 2:
-                pass
-
-        self.tableWidgetDBID0.setHorizontalHeaderLabels(['DBID0'])
-        self.tableWidgetDBID0.setItem(0, 0, QTableWidgetItem("功能完善中...敬请期待"))
+            cnt = len(v)  # 生成的col必须额外加一列DBID0的数据，所以取得的v还要加个1
+            colx = 0
+            if cnt > 1:
+                self.tableWidgetDBID0.setItem(rowx, colx, QTableWidgetItem(k))
+                for i in range(cnt):
+                    colx += 1
+                    td = os.path.split(v[i])[-1]
+                    self.tableWidgetDBID0.setItem(rowx, colx, QTableWidgetItem(td))
+                rowx += 1
+        # table 自适应行列宽高
+        self.tableWidgetDBID0.resizeRowsToContents()
+        self.tableWidgetDBID0.resizeColumnsToContents()
 
 
 class MainForm(QMainWindow, Ui_MainWindow):
@@ -121,8 +134,7 @@ class MainForm(QMainWindow, Ui_MainWindow):
 
     # 通过注册表获取桌面路径
     def getDeskTop(self):
-        key = winreg.OpenKey(winreg.HKEY_CURRENT_USER,
-                             r'Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders')
+        key = winreg.OpenKey(winreg.HKEY_CURRENT_USER, r'Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders')
         return winreg.QueryValueEx(key, "Desktop")[0]
 
     # write tab log
@@ -285,15 +297,13 @@ class MainForm(QMainWindow, Ui_MainWindow):
                     self, "错误 #2", f"路径丢失或错误，请检查所选的config文件中，FormPath和FormlibPath的内容\n{e}")
             else:
                 self.wr2Reg()
-
                 # 呈现校验结果窗口
-                sub_ui.setTitleTab(self.titleLog)
-                sub_ui.setSoTab(self.soLog)
-                sub_ui.setTaborderTab(self.tabLog)
-                sub_ui.setPwndTab(self.pwnd_log)
-                sub_ui.setDBID0Tab(self.dbid0_dict)
-                sub_ui.show()
-
+                rst_ui.setTitleTab(self.titleLog)
+                rst_ui.setSoTab(self.soLog)
+                rst_ui.setTaborderTab(self.tabLog)
+                rst_ui.setPwndTab(self.pwnd_log)
+                rst_ui.setDBID0Tab(self.dbid0_dict)
+                rst_ui.show()
             finally:
                 pass
         else:
@@ -315,6 +325,6 @@ if __name__ == "__main__":
     main_ui.show()
 
     # 实例化子窗口
-    sub_ui = SubForm()
+    rst_ui = RstForm()
 
     sys.exit(app.exec())
