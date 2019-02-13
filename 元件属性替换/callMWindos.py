@@ -40,7 +40,7 @@ class MainForm(QMainWindow, Ui_MainWindow):
         }
 
         self.code_list = ['utf-8', 'big5']
-        self.folderPath = None
+        self.folderPath = ""
         self._settings = QSettings(
             "TechMation\\Chenly\\Qt-tools", "pwndRplc")
 
@@ -54,18 +54,18 @@ class MainForm(QMainWindow, Ui_MainWindow):
         self.cb_exp_code.setToolTip('No prompt')
 
     def rplCellAttr(self):
-        if (os.path.exists(self.folderPath)
+        if (os.path.exists(self.ed_fold_path.text())
             and self.ed_cell_type.text() != ''
                 and self.ed_cell_key.text() != ''):
             # 执行替换函数
-            rplcCell(self.folderPath, self.ed_cell_type.text(),
+            rplcCell(self.ed_fold_path.text(), self.ed_cell_type.text(),
                      self.ed_cell_key.text(), self.ed_cell_val.text(),
                      self.cb_orig_code.currentText(),
                      self.cb_exp_code.currentText())
             QMessageBox.about(self, '提示', '已在桌面生成form文件夹！')
             self.writeInfo2Reg()
         else:
-            QMessageBox.about(self, 'about', '请输入正确的数据')
+            QMessageBox.about(self, 'about', '请输入/选择正确的数据')
 
     def getFolder(self):
         self.folderPath = QFileDialog.getExistingDirectory(

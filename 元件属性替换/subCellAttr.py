@@ -3,6 +3,7 @@
 import os
 import re
 import winreg
+import datetime
 
 
 def get_desktop():  # 获得桌面路径
@@ -23,7 +24,8 @@ def rplcCell(form_path, cell, key, value, code_in='utf-8', code_out='utf-8'):
     cellfound_flag = False  # 　将txt内的元件看做一个区块，用以识别需要替换的元件块
     cellhave_flag = False  # 用以标记txt内是否存在目标元件，不存在则删除
 
-    dst_path = get_desktop() + os.sep + 'form'
+    curtime = datetime.datetime.now().strftime("%m-%d [%H;%M;%S]")
+    dst_path = get_desktop() + os.sep + 'form ' + curtime  # 加上时间戳，防止form覆盖现象
     if not os.path.exists(dst_path):
         os.mkdir(dst_path)
 
@@ -60,7 +62,7 @@ def rplcCell(form_path, cell, key, value, code_in='utf-8', code_out='utf-8'):
                     os.remove(dst_file)
                 else:
                     cellhave_flag = False
-                    print(dst_file + ' create!')
+                    # print(dst_file + ' create!')
 
 
 # if __name__ == '__main__':
