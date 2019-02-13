@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['callMWindos.py'],
-             pathex=['F:\\QT-Projects\\----------可提案\\元件属性替换'],
+             pathex=['F:\\HongX-PyQt\\元件属性替换'],
              binaries=[],
              datas=[],
              hiddenimports=[],

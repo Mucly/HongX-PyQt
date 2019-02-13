@@ -23,10 +23,10 @@ class MainForm(QMainWindow, Ui_MainWindow):
         QToolTip.setFont(QFont('hack', 12))
         self.status = self.statusBar()
         self.status.setLayoutDirection(Qt.RightToLeft)
-        self.status.showMessage('仅供内部学习交流使用 -- Chenly')
+        self.status.showMessage('仅供内部学习交流使用 v1.0.0 -- Chenly')
         self.setToolTip("功能介绍：\n\
   1、替换\删除指定form下所有的txt画面脚本的元件属性\n\
-  2、输入合适的参数后按下Go按钮，将在桌面生成替换\删除后的txt画面脚本\n\
+  2、输入合适的参数后按下Go按钮，将在桌面生成替换\删除后的txt画面脚本文件夹，范例： form 02-13 [16;28;46]\n\
   3、按下Esc可快速结束该工具进程\n\
   4、暂未加入进度提示功能")
         self.setFixedSize(self.width(), self.height())
@@ -62,7 +62,7 @@ class MainForm(QMainWindow, Ui_MainWindow):
                      self.ed_cell_key.text(), self.ed_cell_val.text(),
                      self.cb_orig_code.currentText(),
                      self.cb_exp_code.currentText())
-            QMessageBox.about(self, '提示', '已在桌面生成form文件夹！')
+            QMessageBox.about(self, '提示', '已在桌面生成form x-x [x;x;x]文件夹！')
             self.writeInfo2Reg()
         else:
             QMessageBox.about(self, 'about', '请输入/选择正确的数据')
