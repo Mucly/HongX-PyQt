@@ -821,7 +821,7 @@ bool TMTxt2UI::Ui2Txt_rWgt(QXmlStreamReader &reader, QString &stmTxt)
                     // txt_value = QString::number(txt_value.toInt() - 1);
                     txt_value = QString::number(txt_value.toInt());
                     txt_value += "+top";
-                } else if (propertyName == "imagepath") { // 图片
+                } else if (propertyName == "imagepath" || propertyName == "upbitmap" || propertyName == "downbitmap") { // 图片
 //                    QString dirName = mProQrcDir;
 //                    dirName.remove(mProRoot);
 //                    dirName.remove("/");
@@ -895,8 +895,10 @@ bool TMTxt2UI::Txt2Ui_wWgt(QXmlStreamWriter &writer, const QString &strLine, con
             CheckPropertyName(temp1);
 
             // @ handle temp2 -- text value
-            if (temp1 == "imagepath") HandleProperty_Pixmap(temp2);
-            else {
+            if (temp1 == "imagepath" || temp1 == "upbitmap" || temp1 == "downbitmap")
+                HandleProperty_Pixmap(temp2);
+            else
+            {
                 HandlePropertyValue(stype, temp2);
 
                 // 替换子串中的.txt
@@ -917,7 +919,7 @@ bool TMTxt2UI::Txt2Ui_wWgt(QXmlStreamWriter &writer, const QString &strLine, con
             writer.writeStartElement("property");
             writer.writeAttribute("name", temp1);
 
-            if (temp1 == "imagepath") { // bmpuppath bmpdownpath bmpbackpath logopath
+            if (temp1 == "imagepath" || temp1 == "upbitmap" || temp1 == "downbitmap") { // bmpuppath bmpdownpath bmpbackpath logopath
                 writer.writeStartElement("pixmap");
                 writer.writeAttribute("resource", "../" + mProQrcName);
                 writer.writeCharacters(temp2);
