@@ -771,8 +771,7 @@ bool TMTxt2UI::Ui2Txt_rWgt(QXmlStreamReader &reader, QString &stmTxt)
                 }
             } else if (eleName == "customwidget") { // qcreator自动给ui文件添加的部分
                 eleCustomWgt = true;
-            } else if (eleName == "widget") { // widget节点
-
+            } else if (eleName == "widget") { // widget节点 代表元件
                 if (rootEle) {
                     stmTxt += QString("%1%2:%3\n").arg(spaceTxt[ndex])
                               .arg(reader.attributes().value("name").toString())
@@ -788,7 +787,7 @@ bool TMTxt2UI::Ui2Txt_rWgt(QXmlStreamReader &reader, QString &stmTxt)
                 }
                 ndex++;
             } else if (rootEle) {
-                if (eleName == "property") { // property节点
+                if (eleName == "property") { // property节点 代表当前元件的属性，例 stmTxt= "    max ="
                     propertyName = reader.attributes().value("name").toString();
                     if (propertyName != "geometry") {
                         // @ switch first
@@ -813,6 +812,7 @@ bool TMTxt2UI::Ui2Txt_rWgt(QXmlStreamReader &reader, QString &stmTxt)
             } else if (type == QXmlStreamReader::Characters && !reader.isWhitespace()) {
                 //节点值
                 txt_value = reader.text().toString();
+
                 if (propertyName == "right") { // 宽
                     // txt_value = QString::number(txt_value.toInt() - 1);
                     txt_value = QString::number(txt_value.toInt());
@@ -828,7 +828,14 @@ bool TMTxt2UI::Ui2Txt_rWgt(QXmlStreamReader &reader, QString &stmTxt)
 //                    txt_value.replace(":", dirName);
                     txt_value.remove(":/");
                 }
+                else if ((propertyName == "max") || (propertyName == "min")
+                         || (propertyName == "tickInterval") || (propertyName == "value"))
+                {
+                    // Muc 2019-03-15 TMStudio生成的ui，上述属性，文本节点为double类型数据，故需做特殊处理
+                    txt_value = QString::number(int(txt_value.toDouble()));
+                }
 
+                // Muc 2019-03-15 txt里，true和false要大写
                 if (txt_value == "true" || txt_value == "false")
                     txt_value = txt_value.toUpper();
                 if (txt_value.contains(".ui"))
@@ -895,10 +902,9 @@ bool TMTxt2UI::Txt2Ui_wWgt(QXmlStreamWriter &writer, const QString &strLine, con
             CheckPropertyName(temp1);
 
             // @ handle temp2 -- text value
-            if (temp1 == "imagepath" || temp1 == "upbitmap" || temp1 == "downbitmap")
+            if ((temp1 == "imagepath") || (temp1 == "upbitmap") || (temp1 == "downbitmap")) {
                 HandleProperty_Pixmap(temp2);
-            else
-            {
+            } else {
                 HandlePropertyValue(stype, temp2);
 
                 // 替换子串中的.txt
@@ -919,7 +925,7 @@ bool TMTxt2UI::Txt2Ui_wWgt(QXmlStreamWriter &writer, const QString &strLine, con
             writer.writeStartElement("property");
             writer.writeAttribute("name", temp1);
 
-            if (temp1 == "imagepath" || temp1 == "upbitmap" || temp1 == "downbitmap") { // bmpuppath bmpdownpath bmpbackpath logopath
+            if ((temp1 == "imagepath") || (temp1 == "upbitmap") || (temp1 == "downbitmap")) { // bmpuppath bmpdownpath bmpbackpath logopath
                 writer.writeStartElement("pixmap");
                 writer.writeAttribute("resource", "../" + mProQrcName);
                 writer.writeCharacters(temp2);
@@ -927,8 +933,9 @@ bool TMTxt2UI::Txt2Ui_wWgt(QXmlStreamWriter &writer, const QString &strLine, con
                 //writer.writeAttribute("resource", "./"+mProQrcDir+"/"+mProQrcName);
                 //writer.writeCharacters(temp2);
                 writer.writeEndElement();
-            } else
+            } else {
                 writer.writeTextElement(stype, temp2);
+            }
             writer.writeEndElement();
         }
 
