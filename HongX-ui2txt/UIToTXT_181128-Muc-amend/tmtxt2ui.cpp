@@ -788,6 +788,7 @@ bool TMTxt2UI::Ui2Txt_rWgt(QXmlStreamReader &reader, QString &stmTxt)
                 ndex++;
             } else if (rootEle) {
                 if (eleName == "property") { // property节点 代表当前元件的属性，例 stmTxt= "    max ="
+                    // Muc 2019-03-19 这里的propertyName要根据property.ini来
                     propertyName = reader.attributes().value("name").toString();
                     if (propertyName != "geometry") {
                         // @ switch first
@@ -829,7 +830,7 @@ bool TMTxt2UI::Ui2Txt_rWgt(QXmlStreamReader &reader, QString &stmTxt)
                     txt_value.remove(":/");
                 }
                 else if ((propertyName == "max") || (propertyName == "min")
-                         || (propertyName == "tickInterval") || (propertyName == "value"))
+                         || (propertyName == "tick-interval") || (propertyName == "value"))
                 {
                     // Muc 2019-03-15 TMStudio生成的ui，上述属性，文本节点为double类型数据，故需做特殊处理
                     txt_value = QString::number(int(txt_value.toDouble()));
