@@ -1,3 +1,0 @@
-190315:
-    TMStudio生成的ui中，max、min、tickInterval、value元件的文本节点为double类型数据
-    所以本工具吗，ui转txt时，将上述元件的double文本变为int文本

@@ -1,0 +1,17 @@
+INPUT(
+./release\main.o
+./release\mainwindow.o
+./release\tmtxt2ui.o
+./release\toolbarsetdlg.o
+./release\proinisetdlg.o
+./release\createqrcsetdlg.o
+./release\filebrowser.o
+./release\myhighlighter.o
+./release\moc_mainwindow.o
+./release\moc_tmtxt2ui.o
+./release\moc_toolbarsetdlg.o
+./release\moc_proinisetdlg.o
+./release\moc_createqrcsetdlg.o
+./release\moc_filebrowser.o
+./release\moc_myhighlighter.o
+);

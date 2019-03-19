@@ -1,0 +1,17 @@
+INPUT(
+./debug\main.o
+./debug\mainwindow.o
+./debug\tmtxt2ui.o
+./debug\toolbarsetdlg.o
+./debug\proinisetdlg.o
+./debug\createqrcsetdlg.o
+./debug\filebrowser.o
+./debug\myhighlighter.o
+./debug\moc_mainwindow.o
+./debug\moc_tmtxt2ui.o
+./debug\moc_toolbarsetdlg.o
+./debug\moc_proinisetdlg.o
+./debug\moc_createqrcsetdlg.o
+./debug\moc_filebrowser.o
+./debug\moc_myhighlighter.o
+);
