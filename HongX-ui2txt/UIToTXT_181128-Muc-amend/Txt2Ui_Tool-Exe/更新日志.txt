@@ -1,5 +1,0 @@
-190315:
-    TMStudio生成的ui中，max、min、value、tickInterval元件的文本节点为double类型数据
-    所以本工具，ui转txt时，将上述元件的double文本变为int文本
-190319:
-    TMStudio生成的ui中，因原TMStudio的所有元件均以驼峰式命名，故本工具需特殊处理将tickInterval需要转化为tick-interval（property.ini是其映射表）
