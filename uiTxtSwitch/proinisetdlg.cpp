@@ -37,7 +37,7 @@ bool ProIniSetDlg::UpdatePath(QMap<QString, QString> &map)
     ui->lineEdit_6->setText(map.value(INI_KEY_PRO_IMAGE));
 
     int res = exec();
-    if(res==1){
+    if (res == 1) {
         map.insert(INI_KEY_PRO_ROOT, mRootPath);
         map.insert(INI_KEY_PRO_INI, ui->lineEdit->text());
         map.insert(INI_KEY_TXT_FORM, ui->lineEdit_2->text());
@@ -55,55 +55,55 @@ bool ProIniSetDlg::UpdatePath(QMap<QString, QString> &map)
  */
 void ProIniSetDlg::on_btnSetIni_clicked()
 {
-     QString flPath = QFileDialog::getOpenFileName(this, tr("加载项目配置ini"), "./", "config.ini");
-     if(flPath.isEmpty()) return;
-     if(flPath.right(11) != "/config.ini") return;
-     ui->lineEdit->setText(flPath);
+    QString flPath = QFileDialog::getOpenFileName(this, tr("加载项目配置ini"), "./", "config.ini");
+    if (flPath.isEmpty()) return;
+    if (flPath.right(11) != "/config.ini") return;
+    ui->lineEdit->setText(flPath);
 
-     // @ get project root path
-     mRootPath = flPath;
-     mRootPath.remove("config.ini");
+    // @ get project root path
+    mRootPath = flPath;
+    mRootPath.remove("config.ini");
 
-     // @ update other
-     QSettings *pConf = new QSettings(flPath, QSettings::IniFormat);
-     if(pConf){
-         QString temp = pConf->value(SEINI_KEY_FORM).toString();
-         //qDebug() << "****** temp1 =" << flPath;
-         temp = temp.remove("./");
-         ui->lineEdit_2->setText(mRootPath+temp);
-         ui->lineEdit_4->setText(mRootPath+temp);
+    // @ update other
+    QSettings *pConf = new QSettings(flPath, QSettings::IniFormat);
+    if (pConf) {
+        QString temp = pConf->value(SEINI_KEY_FORM).toString();
+        //qDebug() << "****** temp1 =" << flPath;
+        temp = temp.remove("./");
+        ui->lineEdit_2->setText(mRootPath + temp);
+        ui->lineEdit_4->setText(mRootPath + temp);
 
-         temp = pConf->value(SEINI_KEY_TOOLBAR).toString();
-         //qDebug() << "****** temp2 =" << temp;
-         temp = temp.remove("./");
-         ui->lineEdit_3->setText(mRootPath+temp);
-         ui->lineEdit_5->setText(mRootPath+temp);
+        temp = pConf->value(SEINI_KEY_TOOLBAR).toString();
+        //qDebug() << "****** temp2 =" << temp;
+        temp = temp.remove("./");
+        ui->lineEdit_3->setText(mRootPath + temp);
+        ui->lineEdit_5->setText(mRootPath + temp);
 
-         //mProQrcPath = mRootPath;
+        //mProQrcPath = mRootPath;
 
-         temp = pConf->value(SEINI_KEY_IMAGE).toString();
-         //qDebug() << "****** temp2 =" << temp;
-         temp.remove("./");
-         temp.remove("image/");
-         mProQrcPath = mRootPath+temp;
-         ui->lineEdit_6->setText(mProQrcPath);
+        temp = pConf->value(SEINI_KEY_IMAGE).toString();
+        //qDebug() << "****** temp2 =" << temp;
+        temp.remove("./");
+        temp.remove("image/");
+        mProQrcPath = mRootPath + temp;
+        ui->lineEdit_6->setText(mProQrcPath);
 
-         delete pConf;
-         pConf = NULL;
-     }
+        delete pConf;
+        pConf = NULL;
+    }
 }
 
 void ProIniSetDlg::on_btnSetUi1_clicked()
 {
     QString dirPath = QFileDialog::getExistingDirectory(this, tr("form的ui路径设置"), "./");
-    if(dirPath.isEmpty()) return;
+    if (dirPath.isEmpty()) return;
     ui->lineEdit_4->setText(dirPath);
 }
 
 void ProIniSetDlg::on_btnSetUi2_clicked()
 {
     QString dirPath = QFileDialog::getExistingDirectory(this, tr("toolbar的ui路径设置"), "./");
-    if(dirPath.isEmpty()) return;
+    if (dirPath.isEmpty()) return;
     ui->lineEdit_5->setText(dirPath);
 }
 
@@ -121,18 +121,18 @@ void ProIniSetDlg::on_btnCancle_clicked()
 
 // @ image
 void ProIniSetDlg::on_btnCreateQrc_clicked()
-{   
+{
 //    qDebug() << "******* mProQrcPath =" <<mProQrcPath;
 
     QStringList filters, listNames, ltDirNames;
-    filters << "*.png"<<"*.bmp"<<"*.jpg"<<"*.jpeg"<<"*.gif"
-            <<"*.PNG"<<"*.BMP"<<"*.JPG";//设置过滤类型
+    filters << "*.png" << "*.bmp" << "*.jpg" << "*.jpeg" << "*.gif"
+            << "*.PNG" << "*.BMP" << "*.JPG"; //设置过滤类型
     listNames.clear();
     ltDirNames.clear();
 
     // @ get para
     CreateQrcSetDlg dlg;
-    if(!dlg.GetQrcPara(mProQrcName, ltDirNames)) return;
+    if (!dlg.GetQrcPara(mProQrcName, ltDirNames)) return;
 //    qDebug() << "**********list Name =" << ltDirNames
 //             << ", mProQrcName =" << mProQrcName;
 
@@ -142,13 +142,13 @@ void ProIniSetDlg::on_btnCreateQrc_clicked()
         listNames.append(GetFilesOfDir(path, filters, mProQrcPath));
     }
 
-    if(listNames.isEmpty()) return;
+    if (listNames.isEmpty()) return;
 
 //    qDebug() << "**********list Name =" << listNames;
 //    return;
 
     // @ write qrc
-    if(WriteQrcFile(mProQrcPath+mProQrcName, listNames))
+    if (WriteQrcFile(mProQrcPath + mProQrcName, listNames))
         QMessageBox::information(NULL, tr("提示："), tr("生成qrc成功！"));
 }
 
@@ -161,7 +161,7 @@ void ProIniSetDlg::on_btnCreateQrc_clicked()
 QStringList GetFilesOfDir(QString &dirPath, QStringList &filters, QString removeString)
 {
     QDir dir(dirPath);
-    if(!dir.exists()){
+    if (!dir.exists()) {
         qDebug() << dirPath << "not exist!";
         return QStringList();
     }
@@ -169,16 +169,16 @@ QStringList GetFilesOfDir(QString &dirPath, QStringList &filters, QString remove
     QStringList ltNames;
     ltNames.clear();
     QDirIterator dir_iterator(dirPath,
-            filters,
-            QDir::Files | QDir::NoSymLinks,
-            QDirIterator::Subdirectories);
+                              filters,
+                              QDir::Files | QDir::NoSymLinks,
+                              QDirIterator::Subdirectories);
 
-    while(dir_iterator.hasNext())
+    while (dir_iterator.hasNext())
     {
         dir_iterator.next();
         QFileInfo file_info = dir_iterator.fileInfo();
         QString file_path = file_info.absoluteFilePath();
-        if(!removeString.isEmpty())
+        if (!removeString.isEmpty())
             file_path.remove(removeString);
         ltNames.append(file_path);
     }
@@ -193,7 +193,7 @@ QStringList GetFilesOfDir(QString &dirPath, QStringList &filters, QString remove
 bool WriteQrcFile(QString path, QStringList &flNames)
 {
     QFile fl(path);
-    if(!fl.open(QFile::WriteOnly | QFile::Truncate | QFile::Text)){
+    if (!fl.open(QFile::WriteOnly | QFile::Truncate | QFile::Text)) {
         return false;
     }
 

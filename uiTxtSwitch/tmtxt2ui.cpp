@@ -73,7 +73,7 @@ void TMTxt2UI::Init()
     mBrowser = new FileBrowser(this);
 
     InitPropertyType();
-    InitModel();
+    // InitModel(); // Muc 2019-03-21 mark，集成到UpdateTableWgt()内了
     InitForm();
 
     connect(this, &TMTxt2UI::sglUpdateProgBar, this, &TMTxt2UI::slotUpdateProgressBar);
@@ -452,7 +452,7 @@ void TMTxt2UI::DoTask()
     QTimer::singleShot(800, mBar, SLOT(close()));
 
     // @ 转换完，更新下界面
-    InitModel();
+    // InitModel(); // Muc 2019-03-21 mark，集成到UpdateTableWgt()内了
     UpdateTableWgt();
 }
 
@@ -461,6 +461,8 @@ void TMTxt2UI::DoTask()
  */
 void TMTxt2UI::UpdateTableWgt()
 {
+    InitModel();
+
     ui->tableWgt->setModel(model);
     ui->tableWgt->setRootIndex(model->index(mTXTDirPath));
 
@@ -977,9 +979,7 @@ void TMTxt2UI::slotUpdateProgressBar(int nval)
 void TMTxt2UI::on_btnSelect_clicked()
 {
     InitPropertyType();
-
     UpdateTableWgt();
-
     QMessageBox::information(NULL, tr("提示！"), tr("刷新完成！"));
 }
 
