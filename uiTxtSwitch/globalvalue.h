@@ -23,14 +23,19 @@
 
 #define PRO_QRC_NAME        "res_pro.qrc"
 
+// Muc 2019-03-22 直接<string, string>就好了啊，非要搞成<string, int>，存心刁难维护的人啊
 enum PropType
 {
-    tmBYTE, tmSHORT, tmINT, tmWORD, tmDWORD, tmLONG, tmFLOAT, tmINT64, tmDOUBLE,
-    tmENUM, tmSTRUCT,
-    tmSTR, tmUSTR, tmCHAR, tmBOOL,
-    tmCLASS, tmPROCEDURE,
-    tmFontStream,
-    tmUnknown
+    // 0        1      2       3
+    tmBYTE, tmSHORT, tmINT, tmWORD,
+    // 4        5       6        7
+    tmDWORD, tmLONG, tmFLOAT, tmINT64,
+    // 8         9       10      11
+    tmDOUBLE, tmENUM, tmSTRUCT, tmSTR,
+    // 12     13      14       15
+    tmUSTR, tmCHAR, tmBOOL, tmCLASS,
+    // 16             17          18
+    tmPROCEDURE, tmFontStream, tmUnknown
 };
 
 #endif // GLOBALVALUE_H

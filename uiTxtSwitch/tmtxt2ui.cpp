@@ -184,12 +184,12 @@ QString GetFileName(const QString &path, bool delForm = false)
  */
 QString GetTypeNmae(int ntype)
 {
-    if (ntype == tmBOOL) return "bool";
-    else if (ntype == tmCHAR) return "char";
-    else if (ntype == tmFLOAT || ntype == tmDOUBLE) return "double";
-    else if (ntype == tmSHORT || ntype == tmINT) return "number";
-    else if (ntype == tmLONG || ntype == tmINT64) return "longlong";
-    else if (ntype == tmBYTE || ntype == tmWORD || ntype == tmDWORD) return "UInt";
+    if (ntype == tmBOOL) return "bool"; // 14
+    else if (ntype == tmCHAR) return "char"; // 13
+    else if (ntype == tmFLOAT || ntype == tmDOUBLE) return "double"; // 6、8
+    else if (ntype == tmSHORT || ntype == tmINT) return "number"; // 1、2
+    else if (ntype == tmLONG || ntype == tmINT64) return "longlong"; // 5、7
+    else if (ntype == tmBYTE || ntype == tmWORD || ntype == tmDWORD) return "UInt"; // 0、3、4
     else return "string";
 }
 

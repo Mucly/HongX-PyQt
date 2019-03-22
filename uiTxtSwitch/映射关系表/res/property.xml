@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<List>
+    <property name="x">
+        <convert>left</convert>
+    </property>
+    <property name="y">
+        <convert>top</convert>
+    </property>
+    <property name="width">
+        <convert>right</convert>
+    </property>
+    <property name="height">
+        <convert>bottom</convert>
+    </property>
+    <property name="drawfocus">
+        <convert>draw-focus</convert>
+    </property>
+    <property name="slotColor">
+        <convert>slot-color</convert>
+    </property>
+    <property name="flowColor">
+        <convert>flow-color</convert>
+    </property>
+    <property name="tickInterval">
+        <convert>tick-interval</convert>
+    </property>
+    <property name="showScale">
+        <convert>show-scale</convert>
+    </property>
+    <property name="showSlotCap">
+        <convert>show-slotcap</convert>
+    </property>
+    <property name="showFlowCap">
+        <convert>show-flowcap</convert>
+    </property>
+    <property name="showOutline">
+        <convert>show-outline</convert>
+    </property>
+    <property name="flowDirection">
+        <convert>flow-direction</convert>
+    </property>
+    <property name="direction">
+        <convert>orientation</convert>
+    </property>
+    <property name="scaleStyle">
+        <convert>scale-style</convert>
+    </property>
+    <property name="scaleDiv">
+        <convert>scale-div</convert>
+    </property>
+    <property name="scaleMax">
+        <convert>scale-max</convert>
+    </property>
+    <property name="scaleMin">
+        <convert>scale-min</convert>
+    </property>
+    <property name="integerBase">
+        <convert>integer-base</convert>
+    </property>
+    <property name="hiddenTick">
+        <convert>hidden-tick</convert>
+    </property>
+    <property name="targetColor">
+        <convert>target-color</convert>
+    </property>
+    <property name="tickStyle">
+        <convert>tick-style</convert>
+    </property>
+    <property name="frameShadow">
+        <convert>frame-shadow</convert>
+    </property>
+    <property name="frameShape">
+        <convert>frame-shape</convert>
+    </property>
+    <property name="showBits">
+        <convert>show-bits</convert>
+    </property>
+    <property name="selectedColor">
+        <convert>selected-color</convert>
+    </property>
+    <property name="unSelectedColor">
+        <convert>unselected-color</convert>
+    </property>
+    <property name="outlineColor">
+        <convert>outline-color</convert>
+    </property>
+    <property name="useBit">
+        <convert>use-bit</convert>
+    </property>
+    <property name="startIndex">
+        <convert>start-index</convert>
+    </property>
+    <property name="selectedImagePath">
+        <convert>selected-imagepath</convert>
+    </property>
+    <property name="unSelectedImagePath">
+        <convert>unselected-imagepath</convert>
+    </property>
+    <property name="imageReplace">
+        <convert>image-replace</convert>
+    </property>
+    <property name="innerColor">
+        <convert>inner-color</convert>
+    </property>
+    <property name="outerColor">
+        <convert>outer-color</convert>
+    </property>
+    <property name="dialStyle">
+        <convert>dial-style</convert>
+    </property>
+    <property name="spanAngle">
+        <convert>span-angle</convert>
+    </property>
+    <property name="leftColor">
+        <convert>left-color</convert>
+    </property>
+    <property name="showPercent">
+        <convert>show-percent</convert>
+    </property>
+    <property name="lastColor">
+        <convert>last-color</convert>
+    </property>
+    <property name="lastPercent">
+        <convert>last-percent</convert>
+    </property>
+    <property name="lastMaxdb">
+        <convert>last-maxdb</convert>
+    </property>
+    <property name="lastMindb">
+        <convert>last-mindb</convert>
+    </property>
+    <property name="lastDbid">
+        <convert>last-dbid</convert>
+    </property>
+    <property name="lastMinid">
+        <convert>last-minid</convert>
+    </property>
+    <property name="lastMaxid">
+        <convert>last-maxid</convert>
+    </property>
+    <property name="marginLeft">
+        <convert>margin-left</convert>
+    </property>
+    <property name="marginRight">
+        <convert>margin-right</convert>
+    </property>
+    <property name="marginTop">
+        <convert>margin-top</convert>
+    </property>
+    <property name="marginBottom">
+        <convert>margin-bottom</convert>
+    </property>
+    <property name="legendLeft">
+        <convert>legend-left</convert>
+    </property>
+    <property name="legendTop">
+        <convert>legend-top</convert>
+    </property>
+    <property name="legendWidth">
+        <convert>legend-width</convert>
+    </property>
+    <property name="legendHeight">
+        <convert>legend-height</convert>
+    </property>
+    <property name="legendFontWidth">
+        <convert>legend-font-width</convert>
+    </property>
+    <property name="legendFontHeight">
+        <convert>legend-font-height</convert>
+    </property>
+    <property name="legendFontColor">
+        <convert>legend-font-color</convert>
+    </property>
+    <property name="vernierType">
+        <convert>vernier-type</convert>
+    </property>
+    <property name="borderWidth">
+        <convert>border-width</convert>
+    </property>
+    <property name="textBackground">
+        <convert>text-background</convert>
+    </property>
+    <property name="vernierColor">
+        <convert>vernier-color</convert>
+    </property>
+    <property name="vernierWidth">
+        <convert>vernier-width</convert>
+    </property>
+    <property name="fontWidth">
+        <convert>font-width</convert>
+    </property>
+    <property name="fontHeight">
+        <convert>font-height</convert>
+    </property>
+    <property name="fontColor">
+        <convert>font-color</convert>
+    </property>
+    <property name="rangeLower">
+        <convert>range-lower</convert>
+    </property>
+    <property name="rangeUpper">
+        <convert>range-upper</convert>
+    </property>
+    <property name="exRangeLower">
+        <convert>exrange-lower</convert>
+    </property>
+    <property name="exRangeUpper">
+        <convert>exrange-upper</convert>
+    </property>
+    <property name="rangeReversed">
+        <convert>range-reversed</convert>
+    </property>
+    <property name="tickCount">
+        <convert>tick-count</convert>
+    </property>
+    <property name="tickLabelPadding">
+        <convert>ticklabel-padding</convert>
+    </property>
+    <property name="tickLabelFontWidth">
+        <convert>ticklabel-fontwidth</convert>
+    </property>
+    <property name="tickLabelFontHeight">
+        <convert>ticklabel-fontheight</convert>
+    </property>
+    <property name="tickLabelFontColor">
+        <convert>ticklabel-fontcolor</convert>
+    </property>
+    <property name="axisColor">
+        <convert>axis-color</convert>
+    </property>
+    <property name="axisWidth">
+        <convert>axis-width</convert>
+    </property>
+    <property name="tickColor">
+        <convert>tick-color</convert>
+    </property>
+    <property name="tickWidth">
+        <convert>tick-width</convert>
+    </property>
+    <property name="subTickColor">
+        <convert>subtick-color</convert>
+    </property>
+    <property name="subTickWidth">
+        <convert>subtick-width</convert>
+    </property>
+    <property name="numberFormat">
+        <convert>number-format</convert>
+    </property>
+    <property name="tickLength">
+        <convert>tick-length</convert>
+    </property>
+    <property name="subTickLength">
+        <convert>subtick-length</convert>
+    </property>
+    <property name="rowCount">
+        <convert>row-count</convert>
+    </property>
+    <property name="columnCount">
+        <convert>column-count</convert>
+    </property>
+    <property name="headerHeight">
+        <convert>header-height</convert>
+    </property>
+    <property name="gridStyle">
+        <convert>grid-style</convert>
+    </property>
+    <property name="gridColor">
+        <convert>grid-color</convert>
+    </property>
+    <property name="gridLineWidth">
+        <convert>gridline-width</convert>
+    </property>
+    <property name="horzGridVisible">
+        <convert>horzgrid-visible</convert>
+    </property>
+    <property name="vertGridVisible">
+        <convert>vertgrid-visible</convert>
+    </property>
+    <property name="horzScrollVisible">
+        <convert>horzscroll-visible</convert>
+    </property>
+    <property name="vertScrollVisible">
+        <convert>vertscroll-visible</convert>
+    </property>
+    <property name="buttonfgc">
+        <convert>button-fgc</convert>
+    </property>
+    <property name="buttonbgc">
+        <convert>button-bgc</convert>
+    </property>
+    <property name="visibled">
+        <convert>visible</convert>
+    </property>
+</List>
