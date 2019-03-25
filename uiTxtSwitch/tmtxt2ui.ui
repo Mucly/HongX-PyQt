@@ -14,7 +14,7 @@
             </rect>
         </property>
         <property name="windowTitle">
-            <string>文件转换器（txt与ui文件互转 ver190321）</string>
+            <string>文件转换器（txt与ui文件互转 ver190326）</string>
         </property>
         <property name="styleSheet">
             <string notr="true">QDialog{

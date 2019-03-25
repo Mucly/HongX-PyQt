@@ -23,13 +23,13 @@ type_map = {
     "tmUnknown": 18,
 }
 
-with open('./res/wnd_type.txt') as fd:
-    with open('./[SE-WND]', 'w') as fout:
+with open('./res/wnd_typenum.txt') as fd:
+    with open('./[SE-WND].txt', 'w') as fout:
         fout.write('[SE-WND]\n')
         for line in fd.readlines():
             line = line.replace('\n', '')
             wnd, h_type = line.split(',')
-            real_inx = type_map.get(h_type, 11)
+            real_inx = type_map.get(h_type, 11)  # 缺省：tmSTR
 
             content = wnd + "=" + str(real_inx) + "\n"
             fout.write(content)
