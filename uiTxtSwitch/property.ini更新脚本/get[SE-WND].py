@@ -24,7 +24,7 @@ type_map = {
 }
 
 with open('./res/wnd_typenum.txt') as fd:
-    with open('./[SE-WND].txt', 'w') as fout:
+    with open('./[SE-WND].out', 'w') as fout:
         fout.write('[SE-WND]\n')
         for line in fd.readlines():
             line = line.replace('\n', '')
